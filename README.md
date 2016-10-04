@@ -3,6 +3,7 @@ A shitty Discord bot for a shitty custom MTG server. Contains lots of hardcoded 
 
 # Installation
 Requires Node.js >= 6.0.0
+
 Requires MongoDB server for most anything useful (be sure to configure endpoint in `cc.js` and `dbgen.js`
 
 Create a `token.json` file in `./assets/` of the form
