@@ -15,6 +15,10 @@
         "contact": "__If there is a problem with this report, please send a message to your local bot moderator.__"
     },
 
+    "spoiler":{
+        "unabletofind": "Sorry, I couldn't find any adversaries matching that name."
+    },
+
     "booster":{
         "unabletofind":[
             "Sorry, I couldn't find that set.",
@@ -22,6 +26,9 @@
         ]
     },
 
+    "adversaries":{
+        "unabletofind": "Sorry, I didn't find any data."
+    },
     "roll":{
         "toomanydice": "W-wow, that's a lot of dice, Senpai -- please don't make me roll all those..."
     },

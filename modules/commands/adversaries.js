@@ -11,7 +11,7 @@ module.exports = function(args){
                 let message = [];
                 let total = 0;
                 if(Object.getOwnPropertyNames(report).length == 0){
-                    message.push("Sorry, I didn't find any data.")
+                    message.push(client.strings.adversaries.unabletofind);
                 }
                 else{
                     message.push('');
