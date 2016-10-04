@@ -5,8 +5,8 @@
   "main": "cc.js",
   "scripts": {
     "start": "node cc.js",
-    "adversaries": "node scripts/AdversaryToJSON.js",
-    "db" : "node scripts/dbgen.js"
+    "adversaries": "node AdversaryToJSON.js",
+    "db" : "node dbgen.js"
   },
   "author": "Marisa-chan",
   "dependencies": {
