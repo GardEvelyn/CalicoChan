@@ -1,3 +1,6 @@
+/**
+ * Uses the black magic of spaghetti to validate Adversary decklists.
+ */
 module.exports = function (args) {
     var module = {};
     const client = args.client;
@@ -6,11 +9,7 @@ module.exports = function (args) {
         return validate(decklist);
     };
 
-    function getRandomNumber(numberOfOutcomes){
-        return Math.floor((Math.random() * numberOfOutcomes));
-    }
-
-    function findAdversary(deck){
+    function findAndSpliceAdversary(deck){
         // Find Adversary, record, remove from deck
         return new Promise ((resolve, reject) => {
             for (let i = 0; i < deck.length; i++){
@@ -37,7 +36,7 @@ module.exports = function (args) {
             report.unrecognized = [];
             report.badcolor = [];
 
-            findAdversary(deck).then(adv => {
+            findAndSpliceAdversary(deck).then(adv => {
                 report.adversary = adv;
 
                 if(report.adversary != null){
