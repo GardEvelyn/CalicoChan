@@ -1,0 +1,21 @@
+{
+  "name": "Calico-chan",
+  "version": "1.1.0",
+  "description": "Just an awful Discord bot running on Discord.js.",
+  "main": "cc.js",
+  "scripts": {
+    "start": "node cc.js",
+    "adversaries": "node AdversaryToJSON.js",
+    "db" : "node dbgen.js"
+  },
+  "author": "Marisa-chan",
+  "dependencies": {
+    "discord.js": "*",
+    "mongodb": "^2.2.10",
+    "request": "^2.74.0",
+    "sqlite": "^2.2.0",
+    "xml2js": "*",
+    "ytdl-core": "*",
+    "js-beautify": "*"
+  }
+}

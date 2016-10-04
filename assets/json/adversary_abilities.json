@@ -1,0 +1,401 @@
+{
+    "special":[
+        {
+            "name":"Null",
+            "text":"No effect.",
+            "quantity":1
+        },
+        {
+            "name":"Hand Size",
+            "text":"You begin the game with 8 cards in your hand. This does not take an ability slot.",
+            "quantity":1
+        },
+        {
+            "name":"Life Total",
+            "text":"You begin the game with 25 life. This does not take an ability slot.",
+            "quantity":1
+        },
+        {
+            "name":"Bonus Cards",
+            "text":"You may open an additional booster pack from a set of your choice and add those cards to your draft pool. This does not take an ability slot.",
+            "quantity":1
+        },
+        {
+            "name":"Extra Ability",
+            "text":"You may use an additional Adversary ability. This does not take an ability slot.",
+            "quantity":1
+        }
+    ],
+
+    "white":[
+        {
+            "name":"Lifegain",
+            "text":"{W},{T}: Gain 2 life.",
+            "quantity":5
+        },
+        {
+            "name":"Soldiers",
+            "text":"{3}{W},{T}: Put a 1/1 white Soldier creature token onto the battlefield.",
+            "quantity":5
+        },
+        {
+            "name":"Vigilance",
+            "text":"Creatures you control have Vigilance.",
+            "quantity":4
+        },
+        {
+            "name":"Prevention",
+            "text":"4W, T: Prevent all damage that would be dealt to or by target creature this turn.",
+            "quantity":4
+        },
+        {
+            "name":"Overwhelm",
+            "text":"Creatures can't be blocked unless all attacking creatures are blocked.",
+            "quantity":3
+        },
+        {
+            "name":"Favor",
+            "text":"At the beginning of the game, name a creature. Creatures with the chosen name get +2/+2.",
+            "quantity":3
+        },
+        {
+            "name":"Lifelink",
+            "text":"1W, T: Target spell or creature gains lifelink until end of turn.",
+            "quantity":2
+        },
+        {
+            "name":"Protection",
+            "text":"3W, T: Target creature gains protection from the color of your choice until end of turn.",
+            "quantity":2
+        },
+        {
+            "name":"Sovereign",
+            "text":"At the beginning of your upkeep, if you have 40 or more life, you win the game.",
+            "quantity":1
+        },
+        {
+            "name":"Captain",
+            "text":"Creatures you control can block two additional creatures.",
+            "quantity":1
+        }
+
+    ],
+
+    "blue":[
+        {
+            "name":"Looting",
+            "text":"{U},{T}: Draw a card, then discard a card.",
+            "quantity":5
+        },
+        {
+            "name":"Weaken",
+            "text":"{U}: Target creature gets -1/+1 until end of turn.",
+            "quantity":5
+        },
+        {
+            "name":"Flight",
+            "text":"U, T: Target creature gains flying until end of turn.",
+            "quantity":4
+        },
+        {
+            "name":"Mana Tap",
+            "text":"{2}{U}, {T}: Tap target creature.",
+            "quantity":4
+        },
+        {
+            "name":"Milling",
+            "text":"Whenever an opponent casts a spell, that player puts the top two cards of his or her library into his or her graveyard.",
+            "quantity":3
+        },
+        {
+            "name":"Combat Foresight",
+            "text":"Whenever a creature you control deals combat damage to a player, you may Scry 1.",
+            "quantity":3
+        },
+        {
+            "name":"Librarian",
+            "text":"If you would draw a card while your library has no cards in it, you win the game instead.",
+            "quantity":2
+        },
+        {
+            "name":"Miracle",
+            "text":"4U: The next nonland card you draw has Miracle X, where X is half its converted mana cost, rounded up.",
+            "quantity":2
+        },
+        {
+            "name":"Flash",
+            "text":"Players may cast nonland cards as though they had flash.",
+            "quantity":1
+        },
+        {
+            "name":"Oracle",
+            "text":"If you would draw a card, draw two cards instead.",
+            "quantity":1
+        }
+    ],
+
+    "black":[
+        {
+            "name":"Life Loss",
+            "text":"{1}{B}, {T}: Target opponent loses 1 life.",
+            "quantity":5
+        },
+        {
+            "name":"Regenerate",
+            "text":"{3}{B}: Regenerate target creature you control.",
+            "quantity":5
+        },
+        {
+            "name":"Reanimate",
+            "text":"{3}{B}, {T}: Sacrifice a creature: Return target creature card from your graveyard to your hand.",
+            "quantity":4
+        },
+        {
+            "name":"Deathtouch",
+            "text":"{2}{B}, {T}: Target spell or creature gains deathtouch until end of turn.",
+            "quantity":4
+        },
+        {
+            "name":"Morbidity",
+            "text":"At the beginning of each end step, if a creature died this turn, you may put a +1/+1 counter on target creature.",
+            "quantity":3
+        },
+        {
+            "name":"Decay",
+            "text":"{B}{B}: Target creature gets -0/-1 until end of turn.",
+            "quantity":3
+        },
+        {
+            "name":"Sacrifice",
+            "text":"{4}{B}: Sacrifice a creature you control. Destroy target creature.",
+            "quantity":2
+        },
+        {
+            "name":"Revival",
+            "text":"Whenever a creature dies, return it to the battlefield under its owner's control at the beginning of the next end step.",
+            "quantity":2
+        },
+        {
+            "name":"Necrolord",
+            "text":"If your graveyard is empty, your life total cannot change. (You can't gain or lose life. You can't pay any amount of life except 0.",
+            "quantity":1
+        },
+        {
+            "name":"Empress",
+            "text": "If an opponent would lose life, you may instead gain that much life.",
+            "quantity":1
+        }
+    ],
+
+    "red":[
+        {
+            "name":"Consume",
+            "text":"{1}{R}, {T}: Exile the top card of your library. You may play it this turn.",
+            "quantity":5
+        },
+        {
+            "name":"Berserk",
+            "text":"{R}: Target creature you control gets +1/-1 until end of turn.",
+            "quantity":5
+        },
+        {
+            "name":"Double Strike",
+            "text":"{3}{R}, {T}: Target creature gains double strike until end of turn.",
+            "quantity":4
+        },
+        {
+            "name":"Enrage",
+            "text":"{2}{R}: Target creature attacks this turn if able.",
+            "quantity":4
+        },
+        {
+            "name":"Burn",
+            "text":"{2}{R}, {T}: Deal 2 damage to target player.",
+            "quantity":3
+        },
+        {
+            "name":"Haste",
+            "text":"All creatures have haste.",
+            "quantity":3
+        },
+        {
+            "name":"Storm",
+            "text":"Your spells cost {1} less to cast for each spell played before it this turn.",
+            "quantity":2
+        },
+        {
+            "name":"Aggression",
+            "text": "Creatures you control get +1/+0.",
+            "quantity":2
+        },
+        {
+            "name":"Wrath",
+            "text": "If a source would deal damage to a creature or player, it deals double that damage to that creature or player instead.",
+            "quantity":1
+        },
+        {
+            "name":"Rage",
+            "text": "{R}{R}: Deal 1 damage to each player and each creature.",
+            "quantity":1
+        }
+    ],
+
+    "green":[
+        {
+            "name":"Sprout",
+            "text":"{1}{G}: Put a 0/1 green Plant creature token onto the battlefield.",
+            "quantity":5
+        },
+        {
+            "name":"Convoke",
+            "text":"{T}, tap a creature you control: Add {G} to your mana pool.",
+            "quantity":5
+        },
+        {
+            "name":"Growth",
+            "text":"{2}{G},{T}: Put a +1/+1 counter on target creature you control.",
+            "quantity":4
+        },
+        {
+            "name":"Mulch",
+            "text":"Sacrifice a creature: You gain 2 life.",
+            "quantity":4
+        },
+        {
+            "name":"Awaken",
+            "text":"All lands are 1/1 creatures that are still lands.",
+            "quantity":3
+        },
+        {
+            "name":"Trample",
+            "text":"All creatures have trample.",
+            "quantity":3
+        },
+        {
+            "name":"Formation",
+            "text":"Each creature assigns combat damage equal to its toughness rather than its power.",
+            "quantity":2
+        },
+        {
+            "name":"Fight",
+            "text":"{3}{G}, {T}: Target creature you control fights target creature you don't control.",
+            "quantity":2
+        },
+        {
+            "name":"Locus",
+            "text":"Mana doesn't empty from mana pools as steps and phases end.",
+            "quantity":1
+        },
+        {
+            "name":"Purist",
+            "text":"Spells that cost generic mana to cast cost {1} more to cast.",
+            "quantity":1
+        }
+    ],
+
+    "gold":[
+        {
+            "name":"Domain",
+            "text":"{2}, {T}: Gain X life, where X is the number of basic land type among lands you control.",
+            "quantity":5
+        },
+        {
+            "name":"Filter",
+            "text":"{2}: Add one mana of any color to your mana pool.",
+            "quantity":5
+        },
+        {
+            "name":"Spectrum",
+            "text":"Creatures with two or more colors get +1/+1 for each of their colors after the first.",
+            "quantity":4
+        },
+        {
+            "name":"Tribal",
+            "text":"As the game begins, choose a creature type. Creatures of the chosen type get +1/+1.",
+            "quantity":4
+        },
+        {
+            "name":"Keyword",
+            "text":"As the game begins, choose first strike, vigilance, lifelink, flying, trample, menace or haste. {3},{T}: Target creature you control gains that ability until end of turn.",
+            "quantity":3
+        },
+        {
+            "name":"Tutor",
+            "text":"{W}{U}{B}{R}{G}: Search your library for a card and put it into your hand. Then shuffle your library.",
+            "quantity":3
+        },
+        {
+            "name":"Conflux",
+            "text":"You may spend mana as though it were mana of any color.",
+            "quantity":2
+        },
+        {
+            "name":"Maelstrom",
+            "text":"Spells you cast with two or more colors cost {1} less to cast.",
+            "quantity":2
+        },
+        {
+            "name":"Immortal",
+            "text":"Nontoken creatures you control with no abilities get +2/+2.",
+            "quantity":1
+        },
+        {
+            "name":"Phyrexia",
+            "text":"All colored mana costs are Phyrexian mana costs.",
+            "quantity":1
+        }
+    ],
+
+    "colorless":[
+        {
+            "name":"Utility",
+            "text":"{2},{T}: Untap target artifact.",
+            "quantity":5
+        },
+        {
+            "name":"Salvage",
+            "text":"{T}, Sacrifice an artifact: Add {1} to your mana pool.",
+            "quantity":5
+        },
+        {
+            "name":"Conversion",
+            "text":"{4}: Target permanent becomes an artifact in addition to its other types.",
+            "quantity":4
+        },
+        {
+            "name":"Recycling",
+            "text":"{3}, {T}: Put target colorless card from your graveyard on top of your library.",
+            "quantity":4
+        },
+        {
+            "name":"Factory",
+            "text":"{2}, {T}: Put a 1/1 colorless Construct artifact creature token with defender onto the battlefield.",
+            "quantity":3
+        },
+        {
+            "name":"Etched",
+            "text":"You may spend colorless mana as though it were mana of any color.",
+            "quantity":3
+        },
+        {
+            "name":"Production",
+            "text":"All spells cost {1} less to cast.",
+            "quantity":2
+        },
+        {
+            "name":"Integrity",
+            "text":"{4}, {T}: Target artifact gains indestructible until end of turn.",
+            "quantity":2
+        },
+        {
+            "name":"Sunblast",
+            "text":"{3}, {T}: Deal X damage to each creature, where X is the number of colors that creature is.",
+            "quantity":1
+        },
+        {
+            "name":"Envy",
+            "text":"At the beginning of each player's upkeep, that player loses X life, where X is the number of colors among permanents they control.",
+            "quantity":1
+        }
+    ]
+}
