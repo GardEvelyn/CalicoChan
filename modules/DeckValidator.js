@@ -1,5 +1,6 @@
 /**
  * Uses the black magic of spaghetti to validate Adversary decklists.
+ * // TODO: Make this module a bit more sane.
  */
 module.exports = function (args) {
     var module = {};

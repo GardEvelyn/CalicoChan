@@ -4,14 +4,19 @@ const fs = require("fs");
 const MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
-// Connection URL
+// DB URL, should probably move to a config someday
+// TODO: Move to a config someday.
 const url = 'mongodb://localhost:27017/myproject';
 const PREFIX = '!';
 
 MongoClient.connect(url, function(err, database) {
+    // Attach db and strings to client instance because deal w/ it
 	client.db = database;
 	client.strings = JSON.parse(fs.readFileSync("./assets/json/strings.json"));
+
 	const COMMANDS = require('./modules/CommandManager')({'client': client});
+
+    // Attach event listeners
 	client.on("ready", () => {
 		console.log(`Ready to begin! Serving in ${client.guilds.size} servers.`);
 	});

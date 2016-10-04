@@ -1,14 +1,14 @@
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
-// Connection URL
+// DB URL, should probably move to a config someday.
+// TODO: Move to a config someday.
 var url = 'mongodb://localhost:27017/myproject';
 var fs = require('fs');
 const sets = JSON.parse(fs.readFileSync("./assets/json/AllSets-x.json"));
 const cards = JSON.parse(fs.readFileSync("./assets/json/AllCards-x.json"));
 const adversaries = JSON.parse(fs.readFileSync("./assets/json/adversary.json"));
 const abilities = JSON.parse(fs.readFileSync("./assets/json/adversary_abilities.json"));
-// Use connect method to connect to the server
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Connected successfully to server");

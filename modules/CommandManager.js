@@ -1,3 +1,7 @@
+
+/**
+ * CommandManager - Puts together a map of all commands in ./modules/commands
+ */
 module.exports = function (args) {
     const client = args.client;
     const dir = './modules/commands/';
@@ -18,6 +22,5 @@ module.exports = function (args) {
         }
     });
 
-    //module.commands = commands;
     return commands;
 };
