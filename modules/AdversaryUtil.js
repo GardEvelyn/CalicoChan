@@ -1,6 +1,6 @@
 module.exports = function (args) {
     var module = {};
-    var client = args.client;
+    const client = args.client;
     module.getColorReport = function(set){
         return sortByColor(set);
     };

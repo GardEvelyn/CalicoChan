@@ -1,6 +1,6 @@
 module.exports = function (args) {
     var module = {};
-    var client = args.client;
+    const client = args.client;
 
     module.validateList = function(decklist){
         return validate(decklist);

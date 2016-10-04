@@ -1,6 +1,6 @@
 module.exports = function(args){
     var module = {};
-    var request = require('request');
+    const request = require('request');
     const client = args.client;
     module.execute = function(msg){
         console.log(msg.author.username + " booster");

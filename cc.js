@@ -5,7 +5,8 @@ const MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
 // Connection URL
-var url = 'mongodb://localhost:27017/myproject';
+const url = 'mongodb://localhost:27017/myproject';
+const PREFIX = '!';
 
 MongoClient.connect(url, function(err, database) {
 	client.db = database;
@@ -26,7 +27,7 @@ MongoClient.connect(url, function(err, database) {
 	});
 
 	client.on("message", (msg) => {
-	    if(msg.content.startsWith("!")){
+	    if(msg.content.startsWith(PREFIX)){
 	        let command = msg.content.split(" ")[0].substring(1);
 	        try{
 				if(COMMANDS.get(command)){

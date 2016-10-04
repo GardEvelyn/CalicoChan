@@ -1,7 +1,7 @@
 module.exports = function(args){
     var module = {};
     const client = args.client;
-    var adversaryUtil = require('./../AdversaryUtil')({'client': client});
+    const adversaryUtil = require('./../AdversaryUtil')({'client': client});
     module.execute = function(msg){
         console.log(msg.author.username + " spoiler");
         let args = msg.content.substring(8).trim();
