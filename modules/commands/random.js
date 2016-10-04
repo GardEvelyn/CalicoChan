@@ -1,7 +1,7 @@
 module.exports = function(args){
     var module = {};
     const client = args.client;
-    var request = require("request");
+    const request = require("request");
 
     module.execute =  function(msg){
         console.log(msg.author.username + " random");
