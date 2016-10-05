@@ -8,6 +8,7 @@ module.exports = function(args){
         msg.reply('Fetching a random card...').then(reply => {
             request("http://gatherer.wizards.com/Pages/Card/Details.aspx?action=random", function(error, response, body) {
                 if(response.statusCode == 200){
+                    // Capture endpoint + multiverseid
                     let regex = /GET (.*) HTTP/;
                     reply.edit(`${msg.author} - http://gatherer.wizards.com${response.connection._httpMessage._header.match(regex)[1]}`);
                 }

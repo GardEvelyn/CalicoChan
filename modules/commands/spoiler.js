@@ -15,7 +15,7 @@ module.exports = function(args){
                     for(let i = 0; i < adversaries.length; i++){
                         let adversary = adversaries[i];
             			message.push("```");
-            			message.push(`${adversary.name} - ${adversary.colorIdentity}`);
+            			message.push(`${adversary.name} - ${adversary.colorIdentity} - ${adversary.set}`);
             			message.push("");
                         message.push(adversary.text);
             			message.push("```");
