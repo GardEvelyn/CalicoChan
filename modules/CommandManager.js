@@ -1,4 +1,3 @@
-
 /**
  * CommandManager - Puts together a map of all commands in ./modules/commands
  */
