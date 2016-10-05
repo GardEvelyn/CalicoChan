@@ -6,25 +6,25 @@ module.exports = function(args){
         console.log(msg.author.username + " spoiler");
         let args = msg.content.substring(8).trim();
         adversaryUtil.getAdversaries(args).then(adversaries => {
-            let message = [];
-            if(adversaries == null || adversaries.length == 0){
-                message.push(client.strings.spoiler.unabletofind);
-            }
-            else{
-                for(let i = 0; i < adversaries.length; i++){
-                    let adversary = adversaries[i];
-        			message.push("```");
-        			message.push(`${adversary.name} - ${adversary.colorIdentity}`);
-        			message.push("");
-                    message.push(adversary.text);
-        			message.push("```");
-                    message.push("");
+            msg.reply('Searching. . .').then(replyToEdit => {
+                let message = [];
+                if(adversaries == null || adversaries.length == 0){
+                    message.push(client.strings.spoiler.unabletofind);
                 }
-            }
-
-            msg.channel.sendMessage(message);
+                else{
+                    for(let i = 0; i < adversaries.length; i++){
+                        let adversary = adversaries[i];
+            			message.push("```");
+            			message.push(`${adversary.name} - ${adversary.colorIdentity}`);
+            			message.push("");
+                        message.push(adversary.text);
+            			message.push("```");
+                        message.push("");
+                    }
+                }
+                replyToEdit.edit(message);
+            });
         });
-
     }
 
     return module;
