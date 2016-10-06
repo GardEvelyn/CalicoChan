@@ -1,5 +1,5 @@
 # CalicoChan
-A shitty Discord bot for a shitty custom MTG server. Contains lots of hardcoded in-jokes, and is not a generally useful bot.
+A shitty Discord bot leveraging [Discord.js](https://github.com/hydrabolt/discord.js/) for a shitty custom MTG server. Contains lots of hardcoded in-jokes, and is not a generally useful bot.
 
 # Installation
 Requires Node.js >= 6.0.0
