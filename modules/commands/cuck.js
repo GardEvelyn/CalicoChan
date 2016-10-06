@@ -5,7 +5,6 @@ module.exports = function(args){
         console.log(msg.author.username + " cuck");
         let message = [];
 
-        // Hawk
         if(msg.author.id == client.strings.ids.hawk){
             message.push(client.strings.cuck.hawk);
         }

@@ -15,7 +15,7 @@ module.exports = function (args) {
     function sortByColor(set){
         let searches = [];
         if(set){
-            searches.push(client.db.collection('adversaries').find({'set' : set.toUpperCase()}).toArray());
+            searches.push(client.db.collection('adversaries').find({'set' : new RegExp(set, 'i')}).toArray());
         }
         else{
             searches.push(client.db.collection('adversaries').find().toArray());

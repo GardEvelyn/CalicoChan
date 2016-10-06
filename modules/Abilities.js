@@ -26,9 +26,6 @@ module.exports = function (abilities_o) {
         return Math.floor(Math.random() * (high - low + 1) + low);
     }
     module.getRandomAbility = function(category){
-        console.log("doing something");
-        console.log(deck.length);
-
         if(category == null){
             return deck[random(0, deck.length - 1)];
         }
