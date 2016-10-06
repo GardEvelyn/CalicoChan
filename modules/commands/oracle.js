@@ -27,9 +27,21 @@ module.exports = function(args){
                     let card = matches[0];
                     message.push("```");
                     message.push(`${card.name} - ${card.manaCost}`);
-                    message.push(card.type);
+                    let typeline = "";
+                    if(card.supertypes){
+                        typeline += card.supertypes.join(' ');
+                        typeline += ' ';
+                    }
+                    if(card.types){
+                        typeline += card.types.join(' ');
+                    }
+                    if(card.subtypes){
+                        typeline += ' - ';
+                        typeline += card.subtypes.join(' ');
+                    }
+                    message.push(typeline);
                     message.push("");
-                    message.push(card.rules);
+                    message.push(card.text);
                     if(card.power){
                         message.push("");
                         message.push(`${card.power}/${card.toughness}`);
@@ -37,6 +49,11 @@ module.exports = function(args){
                     if(card.loyalty){
                         message.push("");
                         message.push(`Loyalty: ${card.loyalty}`);
+                    }
+
+                    if(card.flavor){
+                        message.push("");
+                        message.push(card.flavor);
                     }
                     message.push("```");
                 }
