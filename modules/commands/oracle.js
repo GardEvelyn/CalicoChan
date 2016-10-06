@@ -26,20 +26,14 @@ module.exports = function(args){
                 else{
                     let card = matches[0];
                     message.push("```");
-                    message.push(`${card.name} - ${card.manaCost}`);
-                    let typeline = "";
-                    if(card.supertypes){
-                        typeline += card.supertypes.join(' ');
-                        typeline += ' ';
+                    let nameline = "";
+                    nameline += card.name;
+                    if(card.manaCost){
+                        nameLine += ` - ${card.manaCost}`;
                     }
-                    if(card.types){
-                        typeline += card.types.join(' ');
-                    }
-                    if(card.subtypes){
-                        typeline += ' - ';
-                        typeline += card.subtypes.join(' ');
-                    }
-                    message.push(typeline);
+                    message.push(nameline);
+                    message.push("");
+                    message.push(card.type);
                     message.push("");
                     message.push(card.text);
                     if(card.power){
