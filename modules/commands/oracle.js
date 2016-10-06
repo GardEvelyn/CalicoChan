@@ -11,45 +11,61 @@ module.exports = function(args){
                 if(matches == null || matches.length == 0){
                     message.push(client.strings.oracle.unabletofind);
                 }
-                else if(20 > matches.length && matches.length > 1){
-                    message.push("")
-                    message.push(client.strings.oracle.multiplematches);
-                    message.push("```");
-                    matches.forEach(match => {
-                        message.push(match.name);
-                    })
-                    message.push("```");
-                }
-                else if(matches.length >= 20){
+
+                if(matches.length >= 20){
                     message.push(client.strings.oracle.toomanymatches);
                 }
+
+
                 else{
-                    let card = matches[0];
-                    message.push("```");
-                    let nameline = "";
-                    nameline += card.name;
-                    if(card.manaCost){
-                        nameline += ` - ${card.manaCost}`;
+                    let card;
+                    if(20 > matches.length && matches.length > 1){
+                        matches.forEach(match => {
+                            if(match.name.toUpperCase() === args.toUpperCase()){
+                                card = match;
+                            }
+                        });
                     }
-                    message.push(nameline);
-                    message.push("");
-                    message.push(card.type);
-                    message.push("");
-                    message.push(card.text);
-                    if(card.power){
-                        message.push("");
-                        message.push(`${card.power}/${card.toughness}`);
-                    }
-                    if(card.loyalty){
-                        message.push("");
-                        message.push(`Loyalty: ${card.loyalty}`);
+                    else{
+                        card = matches[0];
                     }
 
-                    if(card.flavor){
+                    if(card){
+                        message.push("```");
+                        let nameline = "";
+                        nameline += card.name;
+                        if(card.manaCost){
+                            nameline += ` - ${card.manaCost}`;
+                        }
+                        message.push(nameline);
                         message.push("");
-                        message.push(card.flavor);
+                        message.push(card.type);
+                        message.push("");
+                        message.push(card.text);
+                        if(card.power){
+                            message.push("");
+                            message.push(`${card.power}/${card.toughness}`);
+                        }
+                        if(card.loyalty){
+                            message.push("");
+                            message.push(`Loyalty: ${card.loyalty}`);
+                        }
+
+                        if(card.flavor){
+                            message.push("");
+                            message.push(card.flavor);
+                        }
+                        message.push("```");
                     }
-                    message.push("```");
+                    else{
+                        message.push("")
+                        message.push(client.strings.oracle.multiplematches);
+                        message.push("```");
+                        matches.forEach(match => {
+                            message.push(match.name);
+                        })
+                        message.push("```");
+                    }
                 }
                 replyToEdit.edit(message);
             });
