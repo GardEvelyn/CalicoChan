@@ -35,10 +35,17 @@ module.exports = function(args){
                             nameline += ` - ${card.manaCost}`;
                         }
                         message.push(nameline);
-                        message.push("");
-                        message.push(card.type);
-                        message.push("");
-                        message.push(card.text);
+
+                        if(card.type){
+                            message.push("");
+                            message.push(card.type);
+                        }
+                        
+                        if(card.text){
+                            message.push("");
+                            message.push(card.text);
+                        }
+
                         if(card.power){
                             message.push("");
                             message.push(`${card.power}/${card.toughness}`);
