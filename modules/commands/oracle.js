@@ -11,12 +11,9 @@ module.exports = function(args){
                 if(matches == null || matches.length == 0){
                     message.push(client.strings.oracle.unabletofind);
                 }
-
-                if(matches.length >= 20){
+                else if(matches.length >= 20){
                     message.push(client.strings.oracle.toomanymatches);
                 }
-
-
                 else{
                     let card;
                     if(20 > matches.length && matches.length > 1){
