@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const fs = require("fs");
 const MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
@@ -12,7 +11,7 @@ const PREFIX = '!';
 MongoClient.connect(url, function(err, database) {
     // Attach db and strings to client instance because deal w/ it
 	client.db = database;
-	client.strings = JSON.parse(fs.readFileSync("./assets/json/strings.json"));
+	client.strings = require("./assets/json/strings.json");
 
 	const COMMANDS = require('./modules/CommandManager')({'client': client});
 
