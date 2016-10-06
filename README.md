@@ -17,9 +17,6 @@ Ensure that Adversary xmls are in `./assets/adversaryxml/` (you can do this by m
 
 Be sure to `npm install` to get dependencies, then...
 
-Convert adversary xmls to JSON with:
-`npm run adversaries`
-
 Update database with:
 `npm run db`
 
