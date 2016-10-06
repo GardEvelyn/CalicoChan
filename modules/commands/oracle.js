@@ -29,7 +29,7 @@ module.exports = function(args){
                     let nameline = "";
                     nameline += card.name;
                     if(card.manaCost){
-                        nameLine += ` - ${card.manaCost}`;
+                        nameline += ` - ${card.manaCost}`;
                     }
                     message.push(nameline);
                     message.push("");
