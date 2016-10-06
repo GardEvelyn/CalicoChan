@@ -1,11 +1,8 @@
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
-// DB URL, should probably move to a config someday.
-// TODO: Move to a config someday.
-var url = 'mongodb://localhost:27017/myproject';
-var fs = require('fs');
-const abilities = JSON.parse(fs.readFileSync("./assets/json/adversary_abilities.json"));
+const url = require('./config.json').db_endpoint;
+const abilities = require("./assets/json/adversary_abilities.json");
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   insertAbilities(db, () => {

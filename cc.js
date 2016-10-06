@@ -3,9 +3,7 @@ const client = new Discord.Client();
 const MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
-// DB URL, should probably move to a config someday
-// TODO: Move to a config someday.
-const url = 'mongodb://localhost:27017/myproject';
+const url = require('./config.json').db_endpoint;
 const PREFIX = '!';
 
 MongoClient.connect(url, function(err, database) {
