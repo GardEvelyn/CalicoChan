@@ -4,8 +4,17 @@ module.exports = function(args){
     module.execute = function(msg){
         console.log(msg.author.username + " pet");
         messages = client.strings.pet;
-        let r = random(0, messages.length - 1);
-        msg.reply(messages[r]);
+        if(msg.mentions.users.size > 0){
+            let message = "*pets ";
+            let targets_a = msg.mentions.users.map((user) => {
+                return user.toString();
+            });
+            msg.reply(`*pets ${targets_a.join(', ')}`)
+        }
+        else{
+            let r = random(0, messages.length - 1);
+            msg.reply(messages[r]);
+        }
     }
     // Helper
     function random (low, high) {
