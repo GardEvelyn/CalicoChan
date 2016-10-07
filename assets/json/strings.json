@@ -67,7 +67,8 @@
                 "I'm sorry! I'm sorry!",
                 "P-please stop...",
                 "I'll d-do better next time..."
-        ]
+        ],
+        "blue": "*stamps her feet,* I won't do what you say, you big bully! Ah, um... please don't tell any moderators about this..."
     },
 
     "bully":{
@@ -93,6 +94,7 @@
     "ids":{
         "admin" : "205743526716243979",
         "hawk" : "189667659661443072",
-        "cynic" : "177554154166812673"
+        "cynic" : "177554154166812673",
+        "blue" : "149021893016551424"
     }
 }
