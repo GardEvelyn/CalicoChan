@@ -4,7 +4,7 @@ module.exports = function(args){
 	module.execute = function(msg){
 		console.log(msg.author.username + " castelia");
 		msg.reply(client.strings.castelia);
-	}
+	};
 
 	return module;
 };

@@ -6,19 +6,19 @@ module.exports = function (args) {
 	};
 	module.getAdversaries = function(query){
 		return _findAdversaries(query);
-	}
+	};
 
 	function _findAdversaries(query){
-		return client.db.collection('adversaries').find({'name' : new RegExp(query, 'i')}).toArray();
+		return client.db.collection("adversaries").find({"name" : new RegExp(query, "i")}).toArray();
 	}
 
 	function sortByColor(set){
 		let searches = [];
 		if(set){
-			searches.push(client.db.collection('adversaries').find({'set' : new RegExp(set, 'i')}).toArray());
+			searches.push(client.db.collection("adversaries").find({"set" : new RegExp(set, "i")}).toArray());
 		}
 		else{
-			searches.push(client.db.collection('adversaries').find().toArray());
+			searches.push(client.db.collection("adversaries").find().toArray());
 		}
 
 		return Promise.all(searches).then(matches => {
@@ -33,7 +33,7 @@ module.exports = function (args) {
 				report[identity].push(adversary.name);
 			});
 			return report;
-		})
+		});
 	}
 	return module;
 };

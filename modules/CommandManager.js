@@ -3,8 +3,8 @@
  */
 module.exports = function (args) {
 	const client = args.client;
-	const dir = './modules/commands/';
-	const fs = require('fs');
+	const dir = "./modules/commands/";
+	const fs = require("fs");
 
 	var commands = new Map();
 	fs.readdir(dir, (err, files) => {
@@ -16,7 +16,7 @@ module.exports = function (args) {
 		else{
 			for(let i = 0; i < files.length; i++){
 				let fileName = files[i];
-				commands.set(/(.*)\.js/.exec(fileName)[1], require(`./commands/${/(.*)\.js/.exec(fileName)[1]}`)({'client': client}).execute);
+				commands.set(/(.*)\.js/.exec(fileName)[1], require(`./commands/${/(.*)\.js/.exec(fileName)[1]}`)({"client": client}).execute);
 			}
 		}
 	});

@@ -6,7 +6,7 @@ module.exports = function(args){
 		let args = msg.content.substring(7).trim();
 		msg.reply(`Searching for ${args}. . .`).then(replyToEdit => {
 			try{
-				client.db.collection('cards').find({name: new RegExp(args, 'i')}).toArray().then(matches => {
+				client.db.collection("cards").find({name: new RegExp(args, "i")}).toArray().then(matches => {
 					let message = [];
 					message.push(msg.author);
 					if(matches == null || matches.length == 0){
@@ -63,12 +63,12 @@ module.exports = function(args){
 							message.push("```");
 						}
 						else{
-							message.push("")
+							message.push("");
 							message.push(client.strings.oracle.multiplematches);
 							message.push("```");
 							matches.forEach(match => {
 								message.push(match.name);
-							})
+							});
 							message.push("```");
 						}
 					}
@@ -81,7 +81,7 @@ module.exports = function(args){
 			}
 
 		});
-	}
+	};
 
 	return module;
 };

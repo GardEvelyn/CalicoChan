@@ -1,7 +1,7 @@
 module.exports = function(args){
 	var module = {};
-	let abilities_o = require('./assets/json/adversary_abilities.json');
-	const abilityGen = require('./../Abilities')({abilities : abilities_o});
+	let abilities_o = require("./assets/json/adversary_abilities.json");
+	const abilityGen = require("./../Abilities")({abilities : abilities_o});
 	const client = args.client;
 	module.execute = function(msg){
 		console.log(msg.author.username + " ability");
@@ -9,13 +9,13 @@ module.exports = function(args){
 			let category = msg.content.substring(8).trim();
 			let message = [];
 			let ability = {};
-			message.push(msg.author + ", your random ability is:")
+			message.push(msg.author + ", your random ability is:");
 			message.push("```");
 			if(category.length > 0){
 				ability = abilityGen.getRandomAbility(category);
 			}
 			else{
-				ability = abilityGen.getRandomAbility()
+				ability = abilityGen.getRandomAbility();
 			}
 			message.push(ability.name);
 			message.push(ability.text);
@@ -26,7 +26,7 @@ module.exports = function(args){
 			msg.author.sendMessage(client.strings.errformat);
 			console.log(err);
 		}
-	}
+	};
 
 	return module;
 };

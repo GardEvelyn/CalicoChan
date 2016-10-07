@@ -16,11 +16,11 @@ module.exports = function(args){
 				for(let i = 0; i < quantity; i++){
 					let roll = random(1, sides);
 					total += roll;
-					message_a.push(roll)
+					message_a.push(roll);
 				}
-				message_a.push('');
+				message_a.push("");
 				message_a.push("**TOTAL: " + total + "**");
-				message_a.push('');
+				message_a.push("");
 				msg.channel.sendMessage(message_a);
 			}
 			else{
@@ -31,7 +31,7 @@ module.exports = function(args){
 			msg.author.sendMessage(client.strings.errformat);
 			console.log(err);
 		}
-	}
+	};
 	// Helper
 	function random (low, high) {
 		return Math.floor(Math.random() * (high - low + 1) + low);

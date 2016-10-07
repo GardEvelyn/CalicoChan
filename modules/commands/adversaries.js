@@ -1,7 +1,7 @@
 module.exports = function(args){
 	var module = {};
 	const client = args.client;
-	const adversaryUtil = require('./../AdversaryUtil')({'client': client});
+	const adversaryUtil = require("./../AdversaryUtil")({"client": client});
 
 	module.execute = function(msg){
 		console.log(msg.author.username + " adversaries");
@@ -14,11 +14,9 @@ module.exports = function(args){
 					message.push(client.strings.adversaries.unabletofind);
 				}
 				else{
-					message.push('');
+					message.push("");
 					let identities = Object.getOwnPropertyNames(report).sort(function(a, b){
-					  // ASC  -> a.length - b.length
-					  // DESC -> b.length - a.length
-					  return a.length - b.length;
+						return a.length - b.length;
 					});
 					for(let i = 0; i < identities.length; i++){
 						let colorReport = [];
@@ -27,18 +25,18 @@ module.exports = function(args){
 						for(j = 0; j < adversaries_a.length ; j++){
 							total++;
 							let str = adversaries_a[j];
-							if (str.indexOf(' ') === -1){
+							if (str.indexOf(" ") === -1){
 								colorReport.push(str);
 							}
 							else{
-								colorReport.push(str.substr(0, str.indexOf(' ')));
+								colorReport.push(str.substr(0, str.indexOf(" ")));
 							}
 						}
 						message.push("**" + identities[i] + ": " + j + "**");
 						for(let k = 0; k < colorReport.length; k++){
 							message.push(colorReport[k]);
 						}
-						message.push('');
+						message.push("");
 					}
 				}
 				message.push("**Total: " + total + "**");
@@ -49,7 +47,7 @@ module.exports = function(args){
 			msg.author.sendMessage(client.strings.errformat);
 			console.log(err);
 		}
-	}
+	};
 
 	return module;
 };

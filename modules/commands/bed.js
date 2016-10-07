@@ -23,7 +23,7 @@ module.exports = function(args){
 			message += " Go to bed.";
 			msg.channel.sendMessage(message);
 		}
-	}
+	};
 
 	return module;
 };

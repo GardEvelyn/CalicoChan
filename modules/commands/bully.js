@@ -18,7 +18,7 @@ module.exports = function(args){
 			let r = random(0, client.strings.bully.meanthings.length - 1);
 			msg.channel.sendMessage(client.strings.bully.meanthings[r].replace("$NAME", msg.mentions.users.first()));
 		}
-	}
+	};
 	// Helper
 	function random (low, high) {
 		return Math.floor(Math.random() * (high - low + 1) + low);

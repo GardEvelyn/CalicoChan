@@ -1,17 +1,16 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const MongoClient = require('mongodb').MongoClient
-  , assert = require('assert');
+const MongoClient = require("mongodb").MongoClient;
 
-const url = require('./config.json').db_endpoint;
-const PREFIX = '!';
+const url = require("./config.json").db_endpoint;
+const PREFIX = "!";
 
 MongoClient.connect(url, function(err, database) {
 	// Attach db and strings to client instance because deal w/ it
 	client.db = database;
 	client.strings = require("./assets/json/strings.json");
 
-	const COMMANDS = require('./modules/CommandManager')({'client': client});
+	const COMMANDS = require("./modules/CommandManager")({"client": client});
 
 	// Attach event listeners
 	client.on("ready", () => {
@@ -23,9 +22,9 @@ MongoClient.connect(url, function(err, database) {
 		process.exit(0);
 	});
 
-	client.on('error', (error) => {
+	client.on("error", (error) => {
 		console.log("Error event:");
-	 	console.log(error);
+		console.log(error);
 	});
 
 	client.on("message", (msg) => {
@@ -44,4 +43,4 @@ MongoClient.connect(url, function(err, database) {
 	});
 });
 
-client.login(require('./assets/token.json').token);
+client.login(require("./assets/token.json").token);
