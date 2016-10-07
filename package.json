@@ -1,6 +1,6 @@
 {
   "name": "Calico-chan",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "Just an awful Discord bot running on Discord.js.",
   "main": "cc.js",
   "scripts": {
