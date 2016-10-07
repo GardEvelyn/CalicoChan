@@ -40,7 +40,7 @@ module.exports = function(args){
                             message.push("");
                             message.push(card.type);
                         }
-                        
+
                         if(card.text){
                             message.push("");
                             message.push(card.text);
@@ -72,6 +72,9 @@ module.exports = function(args){
                     }
                 }
                 replyToEdit.edit(message);
+            }).catch(err => {
+                console.log(err);
+                replyToEdit.edit(client.strings.err);
             });
         });
     }
