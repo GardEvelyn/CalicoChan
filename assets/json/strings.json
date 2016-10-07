@@ -1,100 +1,100 @@
 {
-    "help": "`!random` `!validate <decklist>` `!booster <setcode>` `!roll <quantity>d<sides>` `!ability [category]` `!adversaries [setcode]` `!spoiler <adversaryname>` `!oracle <cardname>`",
+	"help": "`!random` `!validate <decklist>` `!booster <setcode>` `!roll <quantity>d<sides>` `!ability [category]` `!adversaries [setcode]` `!spoiler <adversaryname>` `!oracle <cardname>`",
 
-    "validate":{
-        "advnull": "Error: I couldn't find your Adversary, so I won't be validating color identity.",
-        "unrecognized": "**I did not recognize the following cards (this is typical, particularly for Adversaries):**",
-        "illegal": "**The following cards are not Modern-legal, or have some other problem (typically, you have too much of this card in your deck):**",
-        "badcolor": "**The following cards do not match your Adversary's color identity:**",
-        "decklistok": [
-            "**To the best of my knowledge, there are no problems with your deck.**",
-            "*HOWEVER, I do not check for minimum deck size, maximum sideboard size, color identity, or Adversary-specific bans.*",
-            "*IMPORTANT: If your decklist is not properly formatted, the best of my knowledge isn't very good!*",
-            ""
-        ],
-        "contact": "__If there is a problem with this report, please send a message to your local bot moderator.__"
-    },
+	"validate":{
+		"advnull": "Error: I couldn't find your Adversary, so I won't be validating color identity.",
+		"unrecognized": "**I did not recognize the following cards (this is typical, particularly for Adversaries):**",
+		"illegal": "**The following cards are not Modern-legal, or have some other problem (typically, you have too much of this card in your deck):**",
+		"badcolor": "**The following cards do not match your Adversary's color identity:**",
+		"decklistok": [
+			"**To the best of my knowledge, there are no problems with your deck.**",
+			"*HOWEVER, I do not check for minimum deck size, maximum sideboard size, color identity, or Adversary-specific bans.*",
+			"*IMPORTANT: If your decklist is not properly formatted, the best of my knowledge isn't very good!*",
+			""
+		],
+		"contact": "__If there is a problem with this report, please send a message to your local bot moderator.__"
+	},
 
-    "spoiler":{
-        "unabletofind": "Sorry, I couldn't find any adversaries matching that name."
-    },
+	"spoiler":{
+		"unabletofind": "Sorry, I couldn't find any adversaries matching that name."
+	},
 
-    "booster":{
-        "unabletofind":[
-            "Sorry, I couldn't find that set.",
-            "As a reminder, you should use the set code (`M10`, `VIS`, `KTK`, etc)."
-        ]
-    },
+	"booster":{
+		"unabletofind":[
+			"Sorry, I couldn't find that set.",
+			"As a reminder, you should use the set code (`M10`, `VIS`, `KTK`, etc)."
+		]
+	},
 
-    "adversaries":{
-        "unabletofind": "Sorry, I didn't find any data."
-    },
-    "roll":{
-        "toomanydice": "W-wow, that's a lot of dice, Senpai -- please don't make me roll all those..."
-    },
+	"adversaries":{
+		"unabletofind": "Sorry, I didn't find any data."
+	},
+	"roll":{
+		"toomanydice": "W-wow, that's a lot of dice, Senpai -- please don't make me roll all those..."
+	},
 
-    "cuck":{
-        "hawk": "Oh. Hi there, Hawk.",
-        "seraph": [
-            "Hey, I think I'm receiving a telepathic message!",
-            "*Closes her eyes and furrows her brow...*"
-        ]
-    },
+	"cuck":{
+		"hawk": "Oh. Hi there, Hawk.",
+		"seraph": [
+			"Hey, I think I'm receiving a telepathic message!",
+			"*Closes her eyes and furrows her brow...*"
+		]
+	},
 
-    "castelia": "Her? She's got a big shield, and she's... I, umm.... umm....",
+	"castelia": "Her? She's got a big shield, and she's... I, umm.... umm....",
 
-    "waifu": "Waifu? Oh, I know one. Seraph is Hawk's waifu!",
+	"waifu": "Waifu? Oh, I know one. Seraph is Hawk's waifu!",
 
-    "pet": [
-        "Senpai's hand is so w-warm..",
-        "S-senpai is noticing me--?",
-        "D-did I do good? I did good, right?",
-        "*Smiles contentedly*"
-    ],
+	"pet": [
+		"Senpai's hand is so w-warm..",
+		"S-senpai is noticing me--?",
+		"D-did I do good? I did good, right?",
+		"*Smiles contentedly*"
+	],
 
-    "smack":{
-        "puke": [
-            "O-ow... I'm sorry, senpai... P-please don't hit me again...",
-            "I don't feel so good...",
-            "*Cups a hand over her mouth*",
-            "*[Vomiting begins]*",
-            "*[Vomiting intensifies]*",
-            "http://pastebin.com/t23u52k9"
-        ],
-        "pain": [
-                "I'm s-sorry, Senpai... I won't m-mess up again...",
-                "Uuuu-- it hurts...",
-                "I'm sorry! I'm sorry!",
-                "P-please stop...",
-                "I'll d-do better next time..."
-        ],
-        "blue": "*stamps her feet,* I won't do what you say, you big bully! Ah, um... please don't tell any moderators about this..."
-    },
+	"smack":{
+		"puke": [
+			"O-ow... I'm sorry, senpai... P-please don't hit me again...",
+			"I don't feel so good...",
+			"*Cups a hand over her mouth*",
+			"*[Vomiting begins]*",
+			"*[Vomiting intensifies]*",
+			"http://pastebin.com/t23u52k9"
+		],
+		"pain": [
+				"I'm s-sorry, Senpai... I won't m-mess up again...",
+				"Uuuu-- it hurts...",
+				"I'm sorry! I'm sorry!",
+				"P-please stop...",
+				"I'll d-do better next time..."
+		],
+		"blue": "*stamps her feet,* I won't do what you say, you big bully! Ah, um... please don't tell any moderators about this..."
+	},
 
-    "bully":{
-        "invalid": "U-umm... Bullying is mean! Please don't make me do it...",
-        "meanthings":[
-            "$NAME, y-you are a s-stupid dumb-head! Dummy! Umm...",
-            "*steals $NAME's pocket money as a generous donation to her upkeep.*",
-            "*shoves $NAME into a locker.*",
-            "$NAME, your waifu is a... a shit! Ummm... sorry...",
-            "*puts a rude sign on $NAME's back.*",
-            "Umm, what is the difference between $NAME's waifu and Chandra, Fire of Kaladesh? Chandra can wait before wanting people to tap her! Hehe, he... Umm..."
-        ],
-        "targetself": "I-I guess I'm just a worthless automaton after all..."
-    },
-    "oracle":{
-        "unabletofind": "Sorry, I was unable to find any cards matching your query.",
-        "toomanymatches": "Sorry, there were too many matches -- could you try being more specific with your query?",
-        "multiplematches": "The following cards matched your query. Please be more specific to get oracle text."
-    },
-    "err": "Sorry, something went wrong. Please safely locate your nearest bot moderator and tell him about this. And p-please don't hit me...",
-    "errformat": "Sorry, something went wrong. Was your command properly formatted?",
+	"bully":{
+		"invalid": "U-umm... Bullying is mean! Please don't make me do it...",
+		"meanthings":[
+			"$NAME, y-you are a s-stupid dumb-head! Dummy! Umm...",
+			"*steals $NAME's pocket money as a generous donation to her upkeep.*",
+			"*shoves $NAME into a locker.*",
+			"$NAME, your waifu is a... a shit! Ummm... sorry...",
+			"*puts a rude sign on $NAME's back.*",
+			"Umm, what is the difference between $NAME's waifu and Chandra, Fire of Kaladesh? Chandra can wait before wanting people to tap her! Hehe, he... Umm..."
+		],
+		"targetself": "I-I guess I'm just a worthless automaton after all..."
+	},
+	"oracle":{
+		"unabletofind": "Sorry, I was unable to find any cards matching your query.",
+		"toomanymatches": "Sorry, there were too many matches -- could you try being more specific with your query?",
+		"multiplematches": "The following cards matched your query. Please be more specific to get oracle text."
+	},
+	"err": "Sorry, something went wrong. Please safely locate your nearest bot moderator and tell him about this. And p-please don't hit me...",
+	"errformat": "Sorry, something went wrong. Was your command properly formatted?",
 
-    "ids":{
-        "admin" : "205743526716243979",
-        "hawk" : "189667659661443072",
-        "cynic" : "177554154166812673",
-        "blue" : "149021893016551424"
-    }
+	"ids":{
+		"admin" : "205743526716243979",
+		"hawk" : "189667659661443072",
+		"cynic" : "177554154166812673",
+		"blue" : "149021893016551424"
+	}
 }
