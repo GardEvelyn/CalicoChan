@@ -5,18 +5,20 @@ const url = require('./config.json').db_endpoint;
 const sets = require("./assets/json/AllSets-x.json");
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
-  insertSets(db, () => {
-      console.log("Inserted sets.")
+  console.log("Dropped sets.");
+  db.collection('sets').drop().then( () => {
+      insertSets(db).then( () => {
+          console.log("Inserted sets.");
+          db.close();
+      });
   });
-  db.close();
 });
 
-var insertSets = function(db, callback) {
+var insertSets = function(db) {
   var collection = db.collection('sets');
   Object.getOwnPropertyNames(sets).forEach(setCode => {
      collection.insert(sets[setCode], (err, result) => {
          assert.equal(err, null);
      });
   });
-  callback();
 }
