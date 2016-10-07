@@ -32,8 +32,8 @@ MongoClient.connect(url, function(err, database) {
 	    if(msg.content.startsWith(PREFIX)){
 	        let command = msg.content.split(" ")[0].substring(1);
 	        try{
-				if(COMMANDS.get(command)){
-					COMMANDS.get(command)(msg);
+				if(COMMANDS.get(command.toLowerCase())){
+					COMMANDS.get(command.toLowerCase())(msg);
 				}
 	        }
 	        catch(err){
