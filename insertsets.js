@@ -15,10 +15,19 @@ MongoClient.connect(url, function(err, db) {
 });
 
 var insertSets = function(db) {
-  var collection = db.collection('sets');
-  Object.getOwnPropertyNames(sets).forEach(setCode => {
-     collection.insert(sets[setCode], (err, result) => {
-         assert.equal(err, null);
-     });
-  });
+    return new Promise( (resolve, reject ) => {
+        try{
+            let collection = db.collection('sets');
+            Object.getOwnPropertyNames(sets).forEach(setCode => {
+               collection.insert(sets[setCode], (err, result) => {
+                   assert.equal(err, null);
+               });
+            });
+            resolve('Success');
+        }
+        catch(err){
+            reject(err);
+        }
+    });
+
 }

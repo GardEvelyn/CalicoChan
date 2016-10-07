@@ -15,14 +15,19 @@ MongoClient.connect(url, function(err, db) {
 });
 
 var insertAbilities = function(db) {
-    console.log("Inserting");
-    var collection = db.collection('abilities');
-    Object.getOwnPropertyNames(abilities).forEach(abilityName => {
-        console.log("doing it");
-
-        let ability = abilities[abilityName];
-        collection.insert(ability, (err, result) => {
-            assert.equal(err, null);
-        })
-    })
+    return new Promise( (resolve, reject ) => {
+        try{
+            let collection = db.collection('abilities');
+            Object.getOwnPropertyNames(abilities).forEach(abilityName => {
+                let ability = abilities[abilityName];
+                collection.insert(ability, (err, result) => {
+                    assert.equal(err, null);
+                })
+            });
+            resolve('Success');
+        }
+        catch(err){
+            reject(err);
+        }
+    });
 }
