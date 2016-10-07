@@ -7,27 +7,27 @@ MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Dropped sets.");
   db.collection('sets').drop().then( () => {
-      insertSets(db).then( () => {
-          console.log("Inserted sets.");
-          db.close();
-      });
+	  insertSets(db).then( () => {
+		  console.log("Inserted sets.");
+		  db.close();
+	  });
   });
 });
 
 var insertSets = function(db) {
-    return new Promise( (resolve, reject ) => {
-        try{
-            let collection = db.collection('sets');
-            Object.getOwnPropertyNames(sets).forEach(setCode => {
-               collection.insert(sets[setCode], (err, result) => {
-                   assert.equal(err, null);
-               });
-            });
-            resolve('Success');
-        }
-        catch(err){
-            reject(err);
-        }
-    });
+	return new Promise( (resolve, reject ) => {
+		try{
+			let collection = db.collection('sets');
+			Object.getOwnPropertyNames(sets).forEach(setCode => {
+			   collection.insert(sets[setCode], (err, result) => {
+				   assert.equal(err, null);
+			   });
+			});
+			resolve('Success');
+		}
+		catch(err){
+			reject(err);
+		}
+	});
 
 }

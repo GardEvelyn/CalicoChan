@@ -7,27 +7,27 @@ MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Dropped abilities.");
   db.collection('abilities').drop().then( () => {
-      insertAbilities(db).then( () => {
-          console.log("Inserted abilities.");
-          db.close();
-      });
+	  insertAbilities(db).then( () => {
+		  console.log("Inserted abilities.");
+		  db.close();
+	  });
   });
 });
 
 var insertAbilities = function(db) {
-    return new Promise( (resolve, reject ) => {
-        try{
-            let collection = db.collection('abilities');
-            Object.getOwnPropertyNames(abilities).forEach(abilityName => {
-                let ability = abilities[abilityName];
-                collection.insert(ability, (err, result) => {
-                    assert.equal(err, null);
-                })
-            });
-            resolve('Success');
-        }
-        catch(err){
-            reject(err);
-        }
-    });
+	return new Promise( (resolve, reject ) => {
+		try{
+			let collection = db.collection('abilities');
+			Object.getOwnPropertyNames(abilities).forEach(abilityName => {
+				let ability = abilities[abilityName];
+				collection.insert(ability, (err, result) => {
+					assert.equal(err, null);
+				})
+			});
+			resolve('Success');
+		}
+		catch(err){
+			reject(err);
+		}
+	});
 }
