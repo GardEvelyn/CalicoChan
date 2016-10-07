@@ -5,7 +5,7 @@
   "main": "cc.js",
   "scripts": {
     "start": "node cc.js",
-    "db": "node AdversaryToJSON.js && node droptables.js && node insertsets.js && node insertcards.js && node insertadversaries.js && node insertabilities.js"
+    "db": "node AdversaryToJSON.js && node insertsets.js && node insertcards.js && node insertadversaries.js && node insertabilities.js"
   },
   "author": "Marisa-chan",
   "dependencies": {
