@@ -5,11 +5,10 @@ module.exports = function(args){
         console.log(msg.author.username + " pet");
         messages = client.strings.pet;
         if(msg.mentions.users.size > 0){
-            let message = "*pets ";
             let targets_a = msg.mentions.users.map((user) => {
                 return user.toString();
             });
-            msg.reply(`*pets ${targets_a.join(', ')}`)
+            msg.channel.sendMessage(`*pets ${targets_a.join(', ')}*`)
         }
         else{
             let r = random(0, messages.length - 1);
