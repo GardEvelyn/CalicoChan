@@ -5,9 +5,9 @@ module.exports = function(args){
         console.log(msg.author.username + " roll");
         try{
             let command = msg.content.substring(5).trim();
-            let parameters_a = command.match(/(\d+)([d])(\d+)/);
+            let parameters_a = command.match(/(\d+)d(\d+)/);
             let quantity = parameters_a[1];
-            let sides = parameters_a[3];
+            let sides = parameters_a[2];
 
             if(quantity < 100){
                 let total = 0;
