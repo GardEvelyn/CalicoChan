@@ -6,9 +6,9 @@ module.exports = function(args){
         let r = random(1, 10);
         let message = [];
         if(msg.author.id == client.strings.ids.blue) {
-			 message.push(client.strings.smack.blue);
-		}
-		else if(r == 10){
+            message.push(client.strings.smack.blue);
+        }
+        else if(r == 10){
             for(let i = 0; i < client.strings.smack.puke.length; i++){
                 message.push(client.strings.smack.puke[i]);
             }
