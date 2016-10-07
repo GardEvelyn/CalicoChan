@@ -5,7 +5,10 @@ module.exports = function(args){
         console.log(msg.author.username + " smack");
         let r = random(1, 10);
         let message = [];
-        if(r == 10){
+        if(msg.author.id == client.strings.ids.blue) {
+			 message.push(client.strings.smack.blue);
+		}
+		else if(r == 10){
             for(let i = 0; i < client.strings.smack.puke.length; i++){
                 message.push(client.strings.smack.puke[i]);
             }
