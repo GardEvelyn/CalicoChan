@@ -15,7 +15,7 @@ module.exports = function(args){
 			message.push("Ah! It's from Seraph-chan! She says... '" + msg.author + ", please tap me'? Huh?");
 		}
 		msg.reply(message);
-	}
+	};
 
 	return module;
 };

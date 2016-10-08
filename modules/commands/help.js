@@ -4,7 +4,7 @@ module.exports = function(args){
 	module.execute = function(msg){
 		console.log(msg.author.username + " help");
 		msg.channel.sendMessage(client.strings.help);
-	}
+	};
 
 	return module;
 };

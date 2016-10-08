@@ -31,7 +31,7 @@ module.exports = function (abilities_o) {
 		}
 		let catdeck = categorizedDecks[category];
 		return catdeck[random(0, catdeck.length - 1)];
-	}
+	};
 	return module;
 
-}
+};

@@ -15,7 +15,7 @@ module.exports = function (args) {
 		return new Promise ((resolve, reject) => {
 			for (let i = 0; i < deck.length; i++){
 				let name = deck[i].name;
-				client.db.collection('adversaries').find({"name" : name}).toArray().then(matchedAdversaries => {
+				client.db.collection("adversaries").find({"name" : name}).toArray().then(matchedAdversaries => {
 					if(matchedAdversaries.length == 0){
 						return resolve(null);
 					}
@@ -30,7 +30,7 @@ module.exports = function (args) {
 
 	function validate(decklist){
 		return new Promise( (resolve, reject) => {
-			deck = convertArrayToJS(convertRawToArray(decklist));
+			let deck = convertArrayToJS(convertRawToArray(decklist));
 			let report = {};
 			report.adversary = null;
 			report.illegal = [];
@@ -79,7 +79,7 @@ module.exports = function (args) {
 		let promises = [];
 		for(let i = 0; i < deck.length; i++){
 			let name = deck[i].name;
-			promises.push(client.db.collection('cards').find({"name" : name}).toArray().then(matches => {
+			promises.push(client.db.collection("cards").find({"name" : name}).toArray().then(matches => {
 				let quantity = deck[i].quantity;
 				if(!matches[0]){
 					return report.unrecognized.push(name);
@@ -118,7 +118,7 @@ module.exports = function (args) {
 					return report.illegal.push(name);
 				}
 			}));
-		};
+		}
 		return Promise.all(promises);
 	}
 
@@ -171,7 +171,7 @@ module.exports = function (args) {
 	}
 
 	function canHaveMultiples(name){
-		n = name.toUpperCase();
+		let n = name.toUpperCase();
 		if(n == "PLAINS" || n == "ISLAND" || n == "SWAMP" || n == "MOUNTAIN" || n == "FOREST" || n == "WASTES" || n == "SHADOWBORN APOSTLE" || n == "RELENTLESS RATS"){
 			return true;
 		}

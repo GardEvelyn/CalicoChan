@@ -1,6 +1,6 @@
 module.exports = function(args){
 	var module = {};
-	const request = require('request');
+	const request = require("request");
 	const client = args.client;
 	module.execute = function(msg){
 		console.log(msg.author.username + " booster");
@@ -33,6 +33,6 @@ module.exports = function(args){
 			msg.author.sendMessage(client.strings.err);
 			console.log(err);
 		}
-	}
+	};
 	return module;
 };

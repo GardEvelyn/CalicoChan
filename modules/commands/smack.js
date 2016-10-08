@@ -14,12 +14,12 @@ module.exports = function(args){
 			}
 		}
 		else{
-			messages = client.strings.smack.pain;
+			let messages = client.strings.smack.pain;
 			let r = random(0, messages.length - 1);
 			message.push(messages[r]);
 		}
 		msg.reply(message);
-	}
+	};
 	// Helper
 	function random (low, high) {
 		return Math.floor(Math.random() * (high - low + 1) + low);

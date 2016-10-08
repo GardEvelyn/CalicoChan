@@ -1,4 +1,4 @@
-const parseString = require('xml2js').parseString;
+const parseString = require("xml2js").parseString;
 var fs = require("fs");
 var adv1 = fs.readFileSync("./assets/adversaryxml/01.Adversary.xml");
 var adv2 = fs.readFileSync("./assets/adversaryxml/02.Adversary.xml");
