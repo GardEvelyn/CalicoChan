@@ -12,6 +12,10 @@ module.exports = function(args){
 		message.push("Oh, it's " + client.strings.box.contents[r]);
 		msg.reply(message);
 	}
+	// Helper
+	function random (low, high) {
+		return Math.floor(Math.random() * (high - low + 1) + low);
+	}
 
 	return module;
 };
