@@ -88,6 +88,26 @@
 		"toomanymatches": "Sorry, there were too many matches -- could you try being more specific with your query?",
 		"multiplematches": "The following cards matched your query. Please be more specific to get oracle text."
 	},
+	"box":{
+		"chatter":[
+			"What's this? Should I open it?",
+			"*cracks open the box*"
+		],
+		"contents":[
+			"the concept of free will.",
+			"a delicate fabergé egg.",
+			"a salacious Serap- oh no, I can't show them that! I-it's nothing!",
+			"a loaded gun.",
+			"a copy of... *Space Raptor Butt Invasion*...? W-why is this here?",
+			"another box.",
+			"the script to the hit cult movie adaptation.",
+			"the Courier's Guild!? How did they get in here?",
+			"a muffin! I wonder if Castelia would like to share it...",
+			"a pet rock. It has such adorable eyes!",
+			"a preachy moral about the human condition. *Yawns*"
+			"my priceless foil Rishadan Port... How nostalgic. *Sighs wistfully before closing the box back up*"
+		],
+	},
 	"err": "Sorry, something went wrong. Please safely locate your nearest bot moderator and tell him about this. And p-please don't hit me...",
 	"errformat": "Sorry, something went wrong. Was your command properly formatted?",
 
