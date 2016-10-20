@@ -91,7 +91,7 @@ module.exports = function(args){
 				dispatcher.on("error", (err) => {
 					console.log("Dispatcher.error");
 					console.log(err);
-					return TUNES_CHANNEL.sendMessage("err).then(() => {
+					return TUNES_CHANNEL.sendMessage(err).then(() => {
 						console.log("Received error event.");
 						queue.shift();
 						play(queue[0]);
