@@ -1,5 +1,5 @@
 {
-	"help": "`!random`\n`!validate <decklist>`\n`!booster <setcode>`\n`!roll <quantity>d<sides>`\n`!ability [category]`\n`!adversaries [setcode]`\n`!spoiler <adversaryname>`\n`!oracle <cardname>`\n`!tunes <play <YouTube URL or search terms> | skip>`",
+	"help": "`!random`\n`!validate <decklist>`\n`!booster <setcode>`\n`!roll <quantity>d<sides>`\n`!ability [category]`\n`!adversaries [setcode]`\n`!spoiler <adversaryname>`\n`!oracle <cardname>`\n`!tunes <play <YouTube URL or search terms> | skip>>`",
 
 	"validate":{
 		"advnull": "Error: I couldn't find your Adversary, so I won't be validating color identity.",
