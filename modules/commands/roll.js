@@ -33,7 +33,7 @@ module.exports = function(args){
 		}
 	};
 
-	module.help = `${client.prefix}roll <quantity>d<sides> : Rolls a specified number of dice with a specified number of sides each.`;
+	module.help = `${client.prefix}roll <quantity>d<sides> :: Rolls a specified number of dice with a specified number of sides each.`;
 	// Helper
 	function random (low, high) {
 		return Math.floor(Math.random() * (high - low + 1) + low);

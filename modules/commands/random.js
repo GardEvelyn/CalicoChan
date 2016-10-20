@@ -17,6 +17,6 @@ module.exports = function(args){
 
 	};
 
-	module.help = `${client.prefix}random : Fetches a random card from Gatherer.`;
+	module.help = `${client.prefix}random :: Fetches a random card from Gatherer.`;
 	return module;
 };

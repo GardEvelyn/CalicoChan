@@ -55,6 +55,6 @@ module.exports = function(args){
 		}
 	};
 
-	module.help = `${client.prefix}validate <decklist> : Validates a decklist for Adversary legality. Results will be PM'd.`;
+	module.help = `${client.prefix}validate <decklist> :: Validates a decklist for Adversary legality. Results will be PM'd.`;
 	return module;
 };

@@ -35,6 +35,6 @@ module.exports = function(args){
 		}
 	};
 
-	module.help = `${client.prefix}booster <setcode>: Generates a booster pack from the specified set.`;
+	module.help = `${client.prefix}booster <setcode> :: Generates a booster pack from the specified set.`;
 	return module;
 };

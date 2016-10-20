@@ -26,7 +26,7 @@ module.exports = function (args) {
 	function help(msg){
 		console.log(msg.author.username + " help");
 		let tosend = [];
-		tosend.push("```");
+		tosend.push("```asciidoc");
 		commands.forEach( command => {
 			if(command.help){
 				tosend.push(command.help);
