@@ -2,8 +2,8 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const MongoClient = require("mongodb").MongoClient;
 
-const url = cr.db_endpoint;
 var cr = require("./config.json");
+const url = cr.db_endpoint;
 var prefix = cr.prefix;
 client.ytkey = cr.youtube;
 client.login(cr.token);
