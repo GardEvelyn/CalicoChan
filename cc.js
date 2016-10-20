@@ -3,9 +3,8 @@ const client = new Discord.Client();
 const MongoClient = require("mongodb").MongoClient;
 
 const url = cr.db_endpoint;
-let cr = require("./assets/token.json");
-var PREFIX = cr.prefix;
-
+var cr = require("./config.json");
+var prefix = cr.prefix;
 client.ytkey = cr.youtube;
 client.login(cr.token);
 
@@ -31,7 +30,7 @@ MongoClient.connect(url, function(err, database) {
 	});
 
 	client.on("message", (msg) => {
-		if(msg.content.startsWith(PREFIX)){
+		if(msg.content.startsWith(prefix)){
 			let command = msg.content.split(" ")[0].substring(1);
 			try{
 				if(COMMANDS.get(command.toLowerCase())){
