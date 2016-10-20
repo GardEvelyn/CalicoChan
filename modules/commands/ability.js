@@ -27,6 +27,6 @@ module.exports = function(args){
 			console.log(err);
 		}
 	};
-
+	module.help = `${client.prefix}ability [category] : Pulls a random generic Adversary ability [from a category].`;
 	return module;
 };

@@ -16,10 +16,25 @@ module.exports = function (args) {
 		else{
 			for(let i = 0; i < files.length; i++){
 				let fileName = files[i];
-				commands.set(/(.*)\.js/.exec(fileName)[1], require(`./commands/${/(.*)\.js/.exec(fileName)[1]}`)({"client": client}).execute);
+				commands.set(/(.*)\.js/.exec(fileName)[1], require(`./commands/${/(.*)\.js/.exec(fileName)[1]}`)({"client": client}));
 			}
 		}
 	});
+
+	commands.set("help", {execute: help, help: "Prints out what you're looking at right now!"});
+
+	function help(msg){
+		console.log(msg.author.username + " help");
+		let tosend = [];
+		tosend.push("```");
+		commands.forEach( command => {
+			if(command.help){
+				tosend.push(command.help);
+			}
+		});
+		tosend.push("```");
+		msg.reply(tosend);
+	}
 
 	return commands;
 };

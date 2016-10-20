@@ -4,7 +4,7 @@ const MongoClient = require("mongodb").MongoClient;
 
 var cr = require("./config.json");
 const url = cr.db_endpoint;
-var prefix = cr.prefix;
+client.prefix = cr.prefix;
 client.ytkey = cr.youtube;
 client.login(cr.token);
 
@@ -30,11 +30,11 @@ MongoClient.connect(url, function(err, database) {
 	});
 
 	client.on("message", (msg) => {
-		if(msg.content.startsWith(prefix)){
+		if(msg.content.startsWith(client.prefix)){
 			let command = msg.content.split(" ")[0].substring(1);
 			try{
 				if(COMMANDS.get(command.toLowerCase())){
-					COMMANDS.get(command.toLowerCase())(msg);
+					COMMANDS.get(command.toLowerCase()).execute(msg);
 				}
 			}
 			catch(err){

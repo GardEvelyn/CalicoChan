@@ -27,5 +27,7 @@ module.exports = function(args){
 		});
 	};
 
+	module.help = `${client.prefix}spoiler <pattern> : Searches for Adversaries whose names match a specified pattern.`;
+
 	return module;
 };
