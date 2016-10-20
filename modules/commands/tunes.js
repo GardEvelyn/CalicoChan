@@ -97,6 +97,9 @@ module.exports = function(module_args){
 	};
 
 	function reportQueue(textchannel){
+		if(queue.length === 0){
+			return textchannel.sendMessage("We've got no tunes -- queue something up, fampai!");
+		}
 		let tosend = [];
 		queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
 		return textchannel.sendMessage(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
