@@ -21,7 +21,7 @@ module.exports = function (args) {
 		}
 	});
 
-	commands.set("help", {execute: help, help: "Prints out what you're looking at right now!"});
+	commands.set("help", {execute: help, help: `${client.prefix}help :: Prints out what you're looking at right now!`});
 
 	function help(msg){
 		console.log(msg.author.username + " help");
