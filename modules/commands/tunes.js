@@ -36,6 +36,9 @@ module.exports = function(module_args){
 				song = queue[0];
 			}
 
+			if(song === undefined){
+				return msg.reply("Sorry, I couldn't find a tune at that index.");
+			}
 			for(let i = 0; i < song.skipVotes.length; i++){
 				if(song.skipVotes[i] == msg.author.id){
 					msg.delete();
