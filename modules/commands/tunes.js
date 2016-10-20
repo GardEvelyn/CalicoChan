@@ -67,7 +67,7 @@ module.exports = function(module_args){
 			}
 		}
 		else{
-			let url = msg.content.split(" ")[2].trim();
+			let url = msg.content.split(" ")[1].trim();
 			if (url == "" || url === undefined) {
 				return TUNES_CHANNEL.sendMessage("Eh? Where's the tune, fampai?");
 			}
