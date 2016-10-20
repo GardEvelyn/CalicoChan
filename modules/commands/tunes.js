@@ -44,7 +44,7 @@ module.exports = function(args){
 
 			queue.push({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username});
 			let tosend = [];
-			queue[msg.guild.id].songs.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
+			queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
 			TUNES_CHANNEL.sendMessage(`**${queue.length}** songs in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
 			msg.delete().then( () => {
 				if(!playing){
