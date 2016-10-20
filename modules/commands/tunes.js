@@ -1,7 +1,7 @@
 module.exports = function(args){
 	var module = {};
 	const client = args.client;
-	//const yt_api = require("simple-youtube-api");
+	const yt_api = require("simple-youtube-api");
 	const yt_dl = require("ytdl-core");
 	const TUNES_GUILD = client.guilds.get(client.strings.ids.guild_id);
 	const TUNES_VOICE = TUNES_GUILD.channels.get(client.strings.ids.voice_id);
@@ -47,23 +47,35 @@ module.exports = function(args){
 			}
 			yt_dl.getInfo(url, (err, info) => {
 				if(err) {
-					return msg.channel.sendMessage(err);
+					searchForVideo(msg).then(pushSong);
 				}
-
-				queue.push({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username});
-				let tosend = [];
-				queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
-				TUNES_CHANNEL.sendMessage(`**${queue.length}** songs in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
+				else{
+					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username});
+				}
 				msg.delete().then( () => {
 					if(!playing){
 						play(queue[0]);
 					}
-
 				});
+
 			});
 		}
 	};
 
+	function pushSong(song){
+		queue.push(song);
+		let tosend = [];
+		queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
+		TUNES_CHANNEL.sendMessage(`**${queue.length}** songs in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
+	}
+	function searchForVideo(msg){
+		return new Promise( (resolve, reject ) => {
+			let query = msg.content.split(" ").splice(2).join(" ");
+			yt_api.searchVideos(query, 1).then(results => {
+				resolve(results.url, results.title, results.durationSeconds, msg.author.username);
+			}).catch(msg.reply);
+		});
+	}
 
 	function play(song) {
 		playing = true;
