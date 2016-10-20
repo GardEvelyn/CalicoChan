@@ -11,6 +11,12 @@ module.exports = function(args){
 	var dispatcher;
 	module.execute = function(msg){
 		let subcommand = msg.content.split(" ")[1];
+		if(msg.channel.id !== TUNES_CHANNEL.id){
+			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
+		}
+		if(TUNES_VOICE.members.get(msg.author.id) === null){
+			return msg.reply("Please only execute \`tunes\` commands if you are actually listening to tunes.");
+		}
 		if ( subcommand === "skip" && playing){
 			let song = queue[0];
 			for(let i = 0; i < song.skipVotes.length; i++){
