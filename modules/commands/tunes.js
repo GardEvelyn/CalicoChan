@@ -60,6 +60,7 @@ module.exports = function(args){
 
 
 	function play(song) {
+		playing = true;
 		getVoiceConnection().then( connection => {
 			try{
 				if (song === undefined) return TUNES_CHANNEL.sendMessage("Finished queue.").then(() => {
