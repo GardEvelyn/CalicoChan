@@ -33,7 +33,7 @@ module.exports = function(args){
 				}
 			}
 		}
-		let url = msg.substring(12).trim();
+		let url = msg.content.split(" ")[2].trim();
 		if (url == "" || url === undefined) {
 			return TUNES_CHANNEL.sendMessage("Eh? Where's the tune, fampai?");
 		}
