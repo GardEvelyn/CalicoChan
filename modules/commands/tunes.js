@@ -129,12 +129,13 @@ module.exports = function(module_args){
 		getVoiceConnection().then( connection => {
 			playing = true;
 			try{
-				if (song === undefined) return TUNES_CHANNEL.sendMessage("Finished queue.").then(() => {
+				if (song === undefined) {
 					playing = false;
 					client.user.setStatus("online");
 					connection.disconnect();
 					TUNES_VOICE.leave();
-				});
+					return;
+				}
 				client.user.setStatus("online", song.title);
 				dispatcher = connection.playStream(yt_dl(song.url, { audioonly: true }), {passes : 3});
 				dispatcher.on("end", () => {
