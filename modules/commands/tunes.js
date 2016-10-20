@@ -1,6 +1,6 @@
-module.exports = function(args){
+module.exports = function(module_args){
 	var module = {};
-	const client = args.client;
+	const client = module_args.client;
 	const YouTube = require("simple-youtube-api");
 	const yt_api = new YouTube(client.ytkey);
 	const yt_dl = require("ytdl-core");
