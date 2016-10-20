@@ -3,9 +3,9 @@ module.exports = function(args){
 	const client = args.client;
 	//const yt_api = require("simple-youtube-api");
 	const yt_dl = require("ytdl-core");
-	const TUNES_GUILD = client.guilds.get(client.strings.tunes.guild_id);
-	const TUNES_VOICE = TUNES_GUILD.channels.get(client.strings.tunes.voice_id);
-	const TUNES_CHANNEL = TUNES_GUILD.channels.get(client.strings.tunes.channel_id);
+	const TUNES_GUILD = client.guilds.get(client.strings.ids.guild_id);
+	const TUNES_VOICE = TUNES_GUILD.channels.get(client.strings.ids.voice_id);
+	const TUNES_CHANNEL = TUNES_GUILD.channels.get(client.strings.ids.channel_id);
 	let queue = [];
 	let playing = false;
 	var dispatcher;
