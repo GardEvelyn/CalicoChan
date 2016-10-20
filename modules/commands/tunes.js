@@ -172,9 +172,7 @@ module.exports = function(module_args){
 		return i;
 	}
 
-	module.help = `${client.prefix}tunes <YouTube URL | Query> : Queues up a tune to play in ${TUNES_VOICE}.
-					${client.prefix}tunes skip [index] : Vote to skip the currently playing tune [or the one at the specified index].
-					${client.prefix}tunes queue : Display the current queue.`;
+	module.help = `${client.prefix}tunes <YouTube URL | Query> :: Queues up a tune to play in ${TUNES_VOICE}.\n${client.prefix}tunes skip [index] :: Vote to skip the currently playing tune [or the one at the specified index].\n${client.prefix}tunes queue :: Display the current queue.`;
 
 	return module;
 };
