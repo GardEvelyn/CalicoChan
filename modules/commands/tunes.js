@@ -46,10 +46,8 @@ module.exports = function(args){
 			if (url == "" || url === undefined) {
 				return TUNES_CHANNEL.sendMessage("Eh? Where's the tune, fampai?");
 			}
-			console.log("uuuu");
 			yt_dl.getInfo(url, (err, info) => {
 				if(err) {
-					console.log("asdf");
 					searchForVideo(msg).then((song) => {
 						pushSong(song).then( () => {
 							msg.delete().then( () => {
@@ -62,7 +60,6 @@ module.exports = function(args){
 					}).catch(console.log);
 				}
 				else{
-					console.log("fdsa");
 					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username}).then( () => {
 						msg.delete().then( () => {
 							if(!playing){
@@ -86,10 +83,9 @@ module.exports = function(args){
 			let query = msg.content.split(" ").splice(2).join(" ");
 			yt_api.searchVideos(query, 1).then(results => {
 				let r = results[0];
-				console.log(r.url);
-				console.log(r.title);
-				console.log(r.durationSeconds);
-				resolve({url: results[0].url, title: results[0].title, runtime: results[0].durationSeconds, requester: msg.author.username});
+				yt_api.getVideoByID(results[0].id).then( video => {
+					resolve({url: video.url, title: video.title, runtime: video.durationSeconds, requester: msg.author.username});
+				})
 			}).catch(reject);
 		});
 	}
@@ -97,10 +93,8 @@ module.exports = function(args){
 	function play(song) {
 		getVoiceConnection().then( connection => {
 			playing = true;
-			console.log("playing");
 			try{
 				if (song === undefined) return TUNES_CHANNEL.sendMessage("Finished queue.").then(() => {
-					console.log("Finished queue");
 					playing = false;
 					client.user.setStatus("online");
 					connection.disconnect();
@@ -110,7 +104,6 @@ module.exports = function(args){
 				song.skipVotes = [];
 				dispatcher = connection.playStream(yt_dl(song.url, { audioonly: true }), {passes : 3});
 				dispatcher.on("end", () => {
-					console.log("Received dispatcher.end");
 					queue.shift();
 					let tosend = [];
 					queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
@@ -120,8 +113,6 @@ module.exports = function(args){
 					play(queue[0]);
 				});
 				dispatcher.on("error", (err) => {
-					console.log("Dispatcher.error");
-					console.log(err);
 					return TUNES_CHANNEL.sendMessage(err).then(() => {
 						console.log("Received error event.");
 						queue.shift();
@@ -140,11 +131,9 @@ module.exports = function(args){
 	function getVoiceConnection(){
 		return new Promise( (resolve, reject) => {
 			if(!TUNES_GUILD.voiceConnection){
-				console.log("Joining voice");
 				TUNES_VOICE.join().then(resolve).catch(reject);
 			}
 			else{
-				console.log("Already in voice");
 				resolve(TUNES_GUILD.voiceConnection);
 			}
 		});
