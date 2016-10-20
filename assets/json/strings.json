@@ -1,5 +1,13 @@
 {
-	"help": "`!random` `!validate <decklist>` `!booster <setcode>` `!roll <quantity>d<sides>` `!ability [category]` `!adversaries [setcode]` `!spoiler <adversaryname>` `!oracle <cardname>` `!tunes <play <YouTube URL or search terms> | skip>`",
+	"help": "`!random`
+	`!validate <decklist>`
+	`!booster <setcode>`
+	`!roll <quantity>d<sides>`
+	`!ability [category]`
+	`!adversaries [setcode]`
+	`!spoiler <adversaryname>`
+	`!oracle <cardname>`
+	`!tunes <play <YouTube URL or search terms> | skip>`",
 
 	"validate":{
 		"advnull": "Error: I couldn't find your Adversary, so I won't be validating color identity.",
