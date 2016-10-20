@@ -76,7 +76,7 @@ module.exports = function(args){
 		queue.push(song);
 		let tosend = [];
 		queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
-		return TUNES_CHANNEL.sendMessage(`**${queue.length}** songs in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
+		return TUNES_CHANNEL.sendMessage(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
 	}
 	function searchForVideo(msg){
 		return new Promise( (resolve, reject ) => {
@@ -107,7 +107,7 @@ module.exports = function(args){
 					let tosend = [];
 					queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
 					if(queue.length > 0){
-						TUNES_CHANNEL.sendMessage(`**${tosend.length}** songs in queue ${(tosend.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
+						TUNES_CHANNEL.sendMessage(`**${tosend.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(tosend.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
 					}
 					play(queue[0]);
 				});
