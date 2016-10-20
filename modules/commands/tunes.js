@@ -98,6 +98,7 @@ module.exports = function(module_args){
 		return textchannel.sendMessage(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
 	}
 	function pushSong(song){
+		song.skipVotes = [];
 		queue.push(song);
 	}
 	function searchForVideo(msg){
@@ -122,7 +123,6 @@ module.exports = function(module_args){
 					TUNES_VOICE.leave();
 				});
 				client.user.setStatus("online", song.title);
-				song.skipVotes = [];
 				dispatcher = connection.playStream(yt_dl(song.url, { audioonly: true }), {passes : 3});
 				dispatcher.on("end", () => {
 					queue.shift();
