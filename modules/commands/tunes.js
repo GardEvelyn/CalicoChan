@@ -67,26 +67,24 @@ module.exports = function(module_args){
 			yt_dl.getInfo(url, (err, info) => {
 				if(err) {
 					searchForVideo(msg).then((song) => {
-						pushSong(song).then( () => {
-							msg.delete().then( () => {
-								reportQueue(TUNES_CHANNEL).then( () => {
-									if(!playing){
-										play(queue[0]);
-									}
-								});
-							});
-						});
-
-					}).catch(console.log);
-				}
-				else{
-					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username}).then( () => {
+						pushSong(song);
 						msg.delete().then( () => {
 							reportQueue(TUNES_CHANNEL).then( () => {
 								if(!playing){
 									play(queue[0]);
 								}
 							});
+						});
+
+					}).catch(console.log);
+				}
+				else{
+					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username});
+					msg.delete().then( () => {
+						reportQueue(TUNES_CHANNEL).then( () => {
+							if(!playing){
+								play(queue[0]);
+							}
 						});
 					});
 				}
