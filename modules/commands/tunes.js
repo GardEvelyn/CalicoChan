@@ -11,27 +11,45 @@ module.exports = function(module_args){
 	var playing = false;
 	var dispatcher;
 	module.execute = function(msg){
-		let subcommand = msg.content.split(" ")[1];
+		let args = msg.content.split(" ").splice(1);
 		if(msg.channel.id !== TUNES_CHANNEL.id){
 			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
 		}
 		if(TUNES_VOICE.members.get(msg.author.id) == null){
 			return msg.reply("Please only execute \`tunes\` commands if you are actually listening to tunes.");
 		}
-		if ( subcommand === "skip" && playing){
-			let song = queue[0];
+		if ( args[0] === "skip" && playing){
+			let song;
+			if(args[1]){
+				try{
+					song = queue[parseInt(args[1] - 1)];
+				}
+				catch(err){
+					return msg.reply(err);
+				}
+			}
+			else{
+				song = queue[0];
+			}
+
 			for(let i = 0; i < song.skipVotes.length; i++){
 				if(song.skipVotes[i] == msg.author.id){
 					msg.delete();
 					return;
 				}
 			}
+
 			if(TUNES_VOICE.members.get(msg.author.id) != null){
 				song.skipVotes.push(msg.author.id);
 				if(song.skipVotes.length >= (Math.ceil((TUNES_VOICE.members.array().length - 1) / 2))){
 					TUNES_CHANNEL.sendMessage("Song skipped.").then(() => {
 						msg.delete();
-						dispatcher.end();
+						if(args[1]){
+							queue.splice(args[1] - 1, 1);
+						}
+						else{
+							dispatcher.end();
+						}
 					});
 				}
 				else{
@@ -41,7 +59,7 @@ module.exports = function(module_args){
 				}
 			}
 		}
-		else if(subcommand === "play"){
+		else if(args[0] === "play"){
 			let url = msg.content.split(" ")[2].trim();
 			if (url == "" || url === undefined) {
 				return TUNES_CHANNEL.sendMessage("Eh? Where's the tune, fampai?");
