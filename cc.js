@@ -41,5 +41,6 @@ MongoClient.connect(url, function(err, database) {
 		}
 	});
 });
-
-client.login(require("./assets/token.json").token);
+let cr = require("./assets/token.json");
+client.ytkey = cr.youtube;
+client.login(cr.token);

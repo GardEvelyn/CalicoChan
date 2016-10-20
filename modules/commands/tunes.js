@@ -1,13 +1,14 @@
 module.exports = function(args){
 	var module = {};
 	const client = args.client;
-	const yt_api = require("simple-youtube-api");
+	const YouTube = require("simple-youtube-api");
+	const yt_api = new YouTube(client.ytkey);
 	const yt_dl = require("ytdl-core");
 	const TUNES_GUILD = client.guilds.get(client.strings.ids.guild_id);
 	const TUNES_VOICE = TUNES_GUILD.channels.get(client.strings.ids.voice_id);
 	const TUNES_CHANNEL = TUNES_GUILD.channels.get(client.strings.ids.channel_id);
-	let queue = [];
-	let playing = false;
+	var queue = [];
+	var playing = false;
 	var dispatcher;
 	module.execute = function(msg){
 		let subcommand = msg.content.split(" ")[1];
@@ -45,19 +46,31 @@ module.exports = function(args){
 			if (url == "" || url === undefined) {
 				return TUNES_CHANNEL.sendMessage("Eh? Where's the tune, fampai?");
 			}
+			console.log("uuuu");
 			yt_dl.getInfo(url, (err, info) => {
 				if(err) {
-					searchForVideo(msg).then(pushSong);
+					console.log("asdf");
+					searchForVideo(msg).then((song) => {
+						pushSong(song).then( () => {
+							msg.delete().then( () => {
+								if(!playing){
+									play(queue[0]);
+								}
+							});
+						});
+
+					}).catch(console.log);
 				}
 				else{
-					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username});
+					console.log("fdsa");
+					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username}).then( () => {
+						msg.delete().then( () => {
+							if(!playing){
+								play(queue[0]);
+							}
+						});
+					});
 				}
-				msg.delete().then( () => {
-					if(!playing){
-						play(queue[0]);
-					}
-				});
-
 			});
 		}
 	};
@@ -66,20 +79,25 @@ module.exports = function(args){
 		queue.push(song);
 		let tosend = [];
 		queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
-		TUNES_CHANNEL.sendMessage(`**${queue.length}** songs in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
+		return TUNES_CHANNEL.sendMessage(`**${queue.length}** songs in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
 	}
 	function searchForVideo(msg){
 		return new Promise( (resolve, reject ) => {
 			let query = msg.content.split(" ").splice(2).join(" ");
 			yt_api.searchVideos(query, 1).then(results => {
-				resolve(results.url, results.title, results.durationSeconds, msg.author.username);
-			}).catch(msg.reply);
+				let r = results[0];
+				console.log(r.url);
+				console.log(r.title);
+				console.log(r.durationSeconds);
+				resolve({url: results[0].url, title: results[0].title, runtime: results[0].durationSeconds, requester: msg.author.username});
+			}).catch(reject);
 		});
 	}
 
 	function play(song) {
-		playing = true;
 		getVoiceConnection().then( connection => {
+			playing = true;
+			console.log("playing");
 			try{
 				if (song === undefined) return TUNES_CHANNEL.sendMessage("Finished queue.").then(() => {
 					console.log("Finished queue");
@@ -92,6 +110,7 @@ module.exports = function(args){
 				song.skipVotes = [];
 				dispatcher = connection.playStream(yt_dl(song.url, { audioonly: true }), {passes : 3});
 				dispatcher.on("end", () => {
+					console.log("Received dispatcher.end");
 					queue.shift();
 					let tosend = [];
 					queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
@@ -120,11 +139,13 @@ module.exports = function(args){
 	}
 	function getVoiceConnection(){
 		return new Promise( (resolve, reject) => {
-			if(!client.voiceConnections.get(TUNES_VOICE.id)){
+			if(!TUNES_GUILD.voiceConnection){
+				console.log("Joining voice");
 				TUNES_VOICE.join().then(resolve).catch(reject);
 			}
 			else{
-				resolve(client.voiceConnections.get(TUNES_VOICE.id));
+				console.log("Already in voice");
+				resolve(TUNES_GUILD.voiceConnection);
 			}
 		});
 	}
