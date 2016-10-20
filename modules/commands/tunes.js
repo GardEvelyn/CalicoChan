@@ -86,7 +86,7 @@ module.exports = function(module_args){
 							});
 						});
 
-					}).catch(console.log);
+					}).catch(msg.reply("S-sorry, I couldn't find that tune. "));
 				}
 				else{
 					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username});
