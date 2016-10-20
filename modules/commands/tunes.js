@@ -18,7 +18,11 @@ module.exports = function(module_args){
 		if(TUNES_VOICE.members.get(msg.author.id) == null){
 			return msg.reply("Please only execute \`tunes\` commands if you are actually listening to tunes.");
 		}
-		if ( args[0] === "skip" && playing){
+
+		if(args[0] === "queue"){
+			reportQueue(TUNES_CHANNEL);
+		}
+		else if ( args[0] === "skip" && playing){
 			let song;
 			if(args[1]){
 				try{
