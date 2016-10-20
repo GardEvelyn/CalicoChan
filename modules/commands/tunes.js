@@ -51,9 +51,11 @@ module.exports = function(args){
 					searchForVideo(msg).then((song) => {
 						pushSong(song).then( () => {
 							msg.delete().then( () => {
-								if(!playing){
-									play(queue[0]);
-								}
+								reportQueue(TUNES_CHANNEL).then( () => {
+									if(!playing){
+										play(queue[0]);
+									}
+								});
 							});
 						});
 
@@ -62,9 +64,11 @@ module.exports = function(args){
 				else{
 					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username}).then( () => {
 						msg.delete().then( () => {
-							if(!playing){
-								play(queue[0]);
-							}
+							reportQueue(TUNES_CHANNEL).then( () => {
+								if(!playing){
+									play(queue[0]);
+								}
+							});
 						});
 					});
 				}
@@ -72,11 +76,13 @@ module.exports = function(args){
 		}
 	};
 
-	function pushSong(song){
-		queue.push(song);
+	function reportQueue(textchannel){
 		let tosend = [];
 		queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
-		return TUNES_CHANNEL.sendMessage(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
+		return textchannel.sendMessage(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
+	}
+	function pushSong(song){
+		queue.push(song);
 	}
 	function searchForVideo(msg){
 		return new Promise( (resolve, reject ) => {
@@ -104,12 +110,7 @@ module.exports = function(args){
 				dispatcher = connection.playStream(yt_dl(song.url, { audioonly: true }), {passes : 3});
 				dispatcher.on("end", () => {
 					queue.shift();
-					let tosend = [];
-					queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
-					if(queue.length > 0){
-						TUNES_CHANNEL.sendMessage(`**${tosend.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(tosend.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
-					}
-					play(queue[0]);
+					reportQueue(TUNES_CHANNEL).then(play(queue[0]));
 				});
 				dispatcher.on("error", (err) => {
 					return TUNES_CHANNEL.sendMessage(err).then(() => {
