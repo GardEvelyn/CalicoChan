@@ -2,8 +2,12 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const MongoClient = require("mongodb").MongoClient;
 
-const url = require("./config.json").db_endpoint;
-const PREFIX = "!";
+const url = cr.db_endpoint;
+let cr = require("./assets/token.json");
+var PREFIX = cr.prefix;
+
+client.ytkey = cr.youtube;
+client.login(cr.token);
 
 MongoClient.connect(url, function(err, database) {
 	// Attach db and strings to client instance because deal w/ it
@@ -41,6 +45,3 @@ MongoClient.connect(url, function(err, database) {
 		}
 	});
 });
-let cr = require("./assets/token.json");
-client.ytkey = cr.youtube;
-client.login(cr.token);

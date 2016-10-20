@@ -82,10 +82,9 @@ module.exports = function(args){
 		return new Promise( (resolve, reject ) => {
 			let query = msg.content.split(" ").splice(2).join(" ");
 			yt_api.searchVideos(query, 1).then(results => {
-				let r = results[0];
 				yt_api.getVideoByID(results[0].id).then( video => {
 					resolve({url: video.url, title: video.title, runtime: video.durationSeconds, requester: msg.author.username});
-				})
+				});
 			}).catch(reject);
 		});
 	}

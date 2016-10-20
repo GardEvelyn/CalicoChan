@@ -1,0 +1,6 @@
+{
+    "db_endpoint" : "mongodb://localhost:27017/myproject",
+	"token" : "BOT-TOKEN-HERE",
+	"youtube" : "API-TOKEN-HERE",
+	"prefix" : "!"
+}
