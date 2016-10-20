@@ -9,12 +9,11 @@ MongoClient.connect(url, function(err, database) {
 	// Attach db and strings to client instance because deal w/ it
 	client.db = database;
 	client.strings = require("./assets/json/strings.json");
-
-	const COMMANDS = require("./modules/CommandManager")({"client": client});
-
+	var COMMANDS;
 	// Attach event listeners
 	client.on("ready", () => {
 		console.log(`Ready to begin! Serving in ${client.guilds.size} servers.`);
+		COMMANDS = require("./modules/CommandManager")({"client": client});
 	});
 
 	client.on("disconnect", () => {
