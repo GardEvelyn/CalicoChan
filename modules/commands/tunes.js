@@ -14,7 +14,7 @@ module.exports = function(args){
 		if(msg.channel.id !== TUNES_CHANNEL.id){
 			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
 		}
-		if(TUNES_VOICE.members.get(msg.author.id) === null){
+		if(TUNES_VOICE.members.get(msg.author.id) == null){
 			return msg.reply("Please only execute \`tunes\` commands if you are actually listening to tunes.");
 		}
 		if ( subcommand === "skip" && playing){
@@ -47,7 +47,7 @@ module.exports = function(args){
 			}
 			yt_dl.getInfo(url, (err, info) => {
 				if(err) {
-					return msg.channel.sendMessage("Error: " + err);
+					return msg.channel.sendMessage(err);
 				}
 
 				queue.push({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username});
@@ -91,7 +91,7 @@ module.exports = function(args){
 				dispatcher.on("error", (err) => {
 					console.log("Dispatcher.error");
 					console.log(err);
-					return TUNES_CHANNEL.sendMessage("Error: " + err).then(() => {
+					return TUNES_CHANNEL.sendMessage("err).then(() => {
 						console.log("Received error event.");
 						queue.shift();
 						play(queue[0]);
