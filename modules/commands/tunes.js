@@ -113,24 +113,23 @@ module.exports = function(module_args){
 		}
 	};
 
-	function reportQueue(textchannel, reportEntireQueue = true){
+	function reportQueue(textchannel){
 		if(queue.length === 0){
 			return textchannel.sendMessage("We've got no tunes -- queue something up, fampai!");
 		}
 		let tosend = [];
-		if(reportEntireQueue){
-			tosend.push(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}`);
-			tosend.push("```");
-			tosend.push(`1. ${queue[0].title} (${getFormattedTime(dispatcher.time)} / ${getFormattedTime(queue[0].runtime * 1000)}) - ${queue[0].requester.username}`);
-			for(let i = 1; i < 10 && i < queue.length; i++){
-				tosend.push(`${i+1}. ${queue[i].title} (${getFormattedTime(queue[i].runtime * 1000)}) - ${queue[i].requester.username}`);
-			}
-			tosend.push("```");
+		tosend.push(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}`);
+		tosend.push("```");
+		tosend.push(`1. ${queue[0].title} (${getFormattedTime(dispatcher.time)} / ${getFormattedTime(queue[0].runtime * 1000)}) - ${queue[0].requester.username}`);
+		for(let i = 1; i < 10 && i < queue.length; i++){
+			tosend.push(`${i+1}. ${queue[i].title} (${getFormattedTime(queue[i].runtime * 1000)}) - ${queue[i].requester.username}`);
 		}
-		else{
-			tosend.push(`Currently playing: \`${queue[0].title}\` - \`${queue[0].requester.username}\`.`);
-		}
+		tosend.push("```");
 		return textchannel.sendMessage(tosend);
+	}
+
+	function reportCurrentlyPlaying(textchannel){
+		return textchannel.sendMessage(`Currently playing: \`${queue[0].title}\` - \`${queue[0].requester.username}\`.`);
 	}
 
 	function getFormattedTime(ms){
@@ -169,7 +168,7 @@ module.exports = function(module_args){
 				dispatcher = connection.playStream(yt_dl(song.url, { audioonly: true }), {passes : 3});
 				dispatcher.on("end", () => {
 					queue.shift();
-					reportQueue(TUNES_CHANNEL, false).then(play(queue[0]));
+					reportCurrentlyPlaying(TUNES_CHANNEL).then(play(queue[0]));
 				});
 				dispatcher.on("error", (err) => {
 					return TUNES_CHANNEL.sendMessage(err).then(() => {
