@@ -56,7 +56,7 @@ module.exports = function(module_args){
 			if(TUNES_VOICE.members.get(msg.author.id) != null){
 				song.skipVotes.push(msg.author.id);
 				if(song.requester.id === msg.author.id || song.skipVotes.length >= (Math.ceil((TUNES_VOICE.members.array().length - 1) / 2))){
-					TUNES_CHANNEL.sendMessage(`${song.title} skipped.`).then(() => {
+					TUNES_CHANNEL.sendMessage(`\`${song.title}\` skipped.`).then(() => {
 						msg.delete();
 						recentlySkipped = true;
 						setTimeout(() => {
