@@ -13,14 +13,7 @@ module.exports = function(args){
 	module.execute =  function(msg){
 		console.log(msg.author.username + " play");
 		if(msg.channel.id !== TUNES_CHANNEL.id){
-			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
-		}
-		if(TUNES_VOICE.members.get(msg.author.id) == null){
-			return msg.reply("Please only execute tunes-related commands if you are actually listening to tunes.");
-		}
-
-		if(msg.channel.id !== TUNES_CHANNEL.id){
-			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
+			return msg.reply(`Please keep tunes-related commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
 		}
 		if(TUNES_VOICE.members.get(msg.author.id) == null){
 			return msg.reply("Please only execute tunes-related commands if you are actually listening to tunes.");

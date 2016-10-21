@@ -10,7 +10,7 @@ module.exports = function(args){
 	module.execute =  function(msg){
 		console.log(msg.author.username + " skip");
 		if(msg.channel.id !== TUNES_CHANNEL.id){
-			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
+			return msg.reply(`Please keep tunes-related commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
 		}
 		if(TUNES_VOICE.members.get(msg.author.id) == null){
 			return msg.reply("Please only execute tunes-related commands if you are actually listening to tunes.");
@@ -41,8 +41,7 @@ module.exports = function(args){
 		}
 		for(let i = 0; i < song.skipVotes.length; i++){
 			if(song.skipVotes[i] == msg.author.id){
-				msg.delete();
-				return;
+				return msg.reply("Sorry, you've already voted to skip this tune.").then(msg.delete());
 			}
 		}
 
@@ -61,7 +60,7 @@ module.exports = function(args){
 						else{
 							client.dispatcher.end();
 						}
-					});	
+					});
 				});
 			}
 			else{

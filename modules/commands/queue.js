@@ -7,7 +7,7 @@ module.exports = function(args){
 	module.execute =  function(msg){
 		console.log(msg.author.username + " queue");
 		if(msg.channel.id !== TUNES_CHANNEL.id){
-			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
+			return msg.reply(`Please keep tunes-related commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
 		}
 
 		if(queue.length === 0){
