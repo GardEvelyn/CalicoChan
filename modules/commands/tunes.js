@@ -17,7 +17,7 @@ module.exports = function(module_args){
 			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
 		}
 		if(TUNES_VOICE.members.get(msg.author.id) == null){
-			return msg.reply("Please only execute \`tunes\` commands if you are actually listening to tunes.");
+			return msg.reply("Please only execute tunes-related commands if you are actually listening to tunes.");
 		}
 
 		if(args[0] === "queue"){
