@@ -23,10 +23,10 @@ module.exports = function(args){
 		}
 
 		let song;
-
+		let index = msg.content.split(" ")[1];
 		if(args[1]){
 			try{
-				song = queue[parseInt(args[1] - 1)];
+				song = queue[parseInt(index - 1)];
 			}
 			catch(err){
 				return msg.reply(err);
@@ -55,8 +55,8 @@ module.exports = function(args){
 					setTimeout(() => {
 						recentlySkipped = false;
 					}, 5000);
-					if(args[1]){
-						queue.splice(parseInt(args[1]) - 1, 1);
+					if(index){
+						queue.splice(index - 1, 1);
 					}
 					else{
 						client.dispatcher.end();
