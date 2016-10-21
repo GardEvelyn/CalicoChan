@@ -98,14 +98,13 @@ module.exports = function(module_args){
 					});
 				}
 				else{
-					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username}, TUNES_CHANNEL);
-					msg.delete().then( () => {
-						reportQueue(TUNES_CHANNEL).then( () => {
+					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username}, TUNES_CHANNEL).then( () => {
+						msg.delete().then( () => {
 							if(!playing){
 								play(queue[0]);
 							}
 						});
-					});
+					});	
 				}
 			});
 		}
