@@ -119,13 +119,15 @@ module.exports = function(module_args){
 		if(reportEntireQueue){
 			tosend.push(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}`);
 			tosend.push("```");
-			for(let i = 0; i < 10 && i < queue.length; i++){
+			tosend.push(`1. ${queue[0].title} (${getFormattedTime(dispatcher.time)} / ${getFormattedTime(queue[0].runtime * 1000)}) - ${queue[0].requester}`);
+			for(let i = 1; i < 10 && i < queue.length; i++){
 				tosend.push(`${i+1}. ${queue[i].title} (${getFormattedTime(queue[i].runtime * 1000)}) - ${queue[i].requester}`);
 			}
 			tosend.push("```");
 		}
-		tosend.push(`Currently playing: ${queue[0].title}, requested by ${queue[0].requester}.`);
-		tosend.push(`${getFormattedTime(dispatcher.time)} / ${getFormattedTime(queue[0].runtime * 1000)}`);
+		else{
+			tosend.push(`Currently playing: ${queue[0].title} :: ${queue[0].requester}.`);
+		}
 		return textchannel.sendMessage(tosend);
 	}
 
