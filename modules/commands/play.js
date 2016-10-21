@@ -104,7 +104,12 @@ module.exports = function(args){
 		});
 	}
 	function reportCurrentlyPlaying(textchannel){
-		return textchannel.sendMessage(`Currently playing: \`${queue[0].title}\` - \`${queue[0].requester.username}\`.`);
+		if(queue.length === 0){
+			return textchannel.sendMessage("We've got no tunes -- queue something up, fampai!");
+		}
+		else{
+			return textchannel.sendMessage(`Currently playing: \`${queue[0].title}\` - \`${queue[0].requester.username}\`.`);	
+		}
 	}
 	function getVoiceConnection(){
 		return new Promise( (resolve, reject) => {
