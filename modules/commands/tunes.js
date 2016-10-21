@@ -92,7 +92,10 @@ module.exports = function(module_args){
 								}
 							});
 						});
-					}).catch(msg.reply("S-sorry, I couldn't find that tune."));
+					}).catch( (err) => {
+						console.log(err);
+						msg.reply("S-sorry, I couldn't find that tune.");
+					});
 				}
 				else{
 					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username}, TUNES_CHANNEL);
