@@ -18,7 +18,7 @@ module.exports = function(args){
 		if(TUNES_VOICE.members.get(msg.author.id) == null){
 			return msg.reply("Please only execute tunes-related commands if you are actually listening to tunes.");
 		}
-		
+
 		if(msg.channel.id !== TUNES_CHANNEL.id){
 			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
 		}
@@ -38,7 +38,7 @@ module.exports = function(args){
 				searchForVideo(msg).then((song) => {
 					pushSong(song, TUNES_CHANNEL).then( () => {
 						msg.delete().then( () => {
-							if(queue.length != 0){
+							if(queue.length === 0){
 								play(queue[0]);
 							}
 						});
@@ -51,7 +51,7 @@ module.exports = function(args){
 			else{
 				pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author}, TUNES_CHANNEL).then( () => {
 					msg.delete().then( () => {
-						if(queue.length != 0){
+						if(queue.length === 0){
 							play(queue[0]);
 						}
 					});
