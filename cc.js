@@ -7,6 +7,8 @@ const url = cr.db_endpoint;
 client.prefix = cr.prefix;
 client.ytkey = cr.youtube;
 client.login(cr.token);
+client.queue = [];
+client.dispatcher = {};
 
 MongoClient.connect(url, function(err, database) {
 	// Attach db and strings to client instance because deal w/ it
