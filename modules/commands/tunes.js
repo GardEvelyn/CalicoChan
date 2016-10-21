@@ -126,7 +126,7 @@ module.exports = function(module_args){
 			tosend.push("```");
 		}
 		else{
-			tosend.push(`Currently playing: ${queue[0].title} :: ${queue[0].requester}.`);
+			tosend.push(`Currently playing: \`${queue[0].title}\`.`);
 		}
 		return textchannel.sendMessage(tosend);
 	}
@@ -139,7 +139,7 @@ module.exports = function(module_args){
 	function pushSong(song, textchannel){
 		song.skipVotes = [];
 		queue.push(song);
-		return textchannel.sendMessage(`Successfully added ${song.title} to the end of the queue, requested by ${song.requester}.`);
+		return textchannel.sendMessage(`Successfully added \`${song.title}\` to the end of the queue.`);
 	}
 	function searchForVideo(msg){
 		return new Promise( (resolve, reject ) => {
