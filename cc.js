@@ -2,19 +2,23 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const MongoClient = require("mongodb").MongoClient;
 
-const url = require("./config.json").db_endpoint;
-const PREFIX = "!";
+var cr = require("./config.json");
+const url = cr.db_endpoint;
+client.prefix = cr.prefix;
+client.ytkey = cr.youtube;
+client.login(cr.token);
+client.queue = [];
+client.dispatcher = {};
 
 MongoClient.connect(url, function(err, database) {
 	// Attach db and strings to client instance because deal w/ it
 	client.db = database;
 	client.strings = require("./assets/json/strings.json");
-
-	const COMMANDS = require("./modules/CommandManager")({"client": client});
-
+	var COMMANDS;
 	// Attach event listeners
 	client.on("ready", () => {
 		console.log(`Ready to begin! Serving in ${client.guilds.size} servers.`);
+		COMMANDS = require("./modules/CommandManager")({"client": client});
 	});
 
 	client.on("disconnect", () => {
@@ -28,11 +32,11 @@ MongoClient.connect(url, function(err, database) {
 	});
 
 	client.on("message", (msg) => {
-		if(msg.content.startsWith(PREFIX)){
+		if(msg.content.startsWith(client.prefix)){
 			let command = msg.content.split(" ")[0].substring(1);
 			try{
 				if(COMMANDS.get(command.toLowerCase())){
-					COMMANDS.get(command.toLowerCase())(msg);
+					COMMANDS.get(command.toLowerCase()).execute(msg);
 				}
 			}
 			catch(err){
@@ -42,5 +46,3 @@ MongoClient.connect(url, function(err, database) {
 		}
 	});
 });
-
-client.login(require("./assets/token.json").token);

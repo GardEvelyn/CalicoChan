@@ -4,14 +4,9 @@ A shitty Discord bot leveraging [Discord.js](https://github.com/hydrabolt/discor
 # Installation
 Requires Node.js >= 6.0.0
 
-Requires MongoDB server for most anything useful (be sure to configure endpoint in `./config.json`)
+Requires MongoDB server for most anything useful.
 
-Create a `token.json` file in `./assets/` of the form
-```
-{
-    "token" : <YOUR_TOKEN_HERE>
-}
-```
+Create a `config.json` file in `./` in the same fashion as the provided `config.json.example`.
 
 Ensure that Adversary xmls are in `./assets/adversaryxml/` (you can do this by moving them manually or by using a symbolic link).
 
