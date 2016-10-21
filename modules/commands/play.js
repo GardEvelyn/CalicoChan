@@ -7,7 +7,7 @@ module.exports = function(args){
 	const TUNES_GUILD = client.guilds.get(client.strings.ids.guild_id);
 	const TUNES_VOICE = TUNES_GUILD.channels.get(client.strings.ids.voice_id);
 	const TUNES_CHANNEL = TUNES_GUILD.channels.get(client.strings.ids.channel_id);
-
+	var playing = false;
 	var queue = client.queue;
 
 	module.execute =  function(msg){
@@ -18,7 +18,7 @@ module.exports = function(args){
 		if(TUNES_VOICE.members.get(msg.author.id) == null){
 			return msg.reply("Please only execute tunes-related commands if you are actually listening to tunes.");
 		}
-		
+
 		if(msg.channel.id !== TUNES_CHANNEL.id){
 			return msg.reply(`Please keep \`tunes\` commands in ${TUNES_CHANNEL}. S-sorry, senpai.`);
 		}
@@ -38,7 +38,7 @@ module.exports = function(args){
 				searchForVideo(msg).then((song) => {
 					pushSong(song, TUNES_CHANNEL).then( () => {
 						msg.delete().then( () => {
-							if(queue.length != 0){
+							if(!playing){
 								play(queue[0]);
 							}
 						});
@@ -51,7 +51,7 @@ module.exports = function(args){
 			else{
 				pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author}, TUNES_CHANNEL).then( () => {
 					msg.delete().then( () => {
-						if(queue.length != 0){
+						if(!playing){
 							play(queue[0]);
 						}
 					});
@@ -77,18 +77,22 @@ module.exports = function(args){
 
 	function play(song) {
 		getVoiceConnection().then( connection => {
+			playing = true;
 			try{
 				if (song === undefined) {
 					client.user.setStatus("online");
 					connection.disconnect();
 					TUNES_VOICE.leave();
+					playing = false;
 					return;
 				}
 				client.user.setStatus("online", song.title);
 				client.dispatcher = connection.playStream(yt_dl(song.url, { audioonly: true }), {passes : 3});
 				client.dispatcher.on("end", () => {
 					queue.shift();
-					reportCurrentlyPlaying(TUNES_CHANNEL).then(play(queue[0]));
+					reportCurrentlyPlaying(TUNES_CHANNEL).then( () => {
+						play(queue[0]);
+					});
 				});
 				client.dispatcher.on("error", (err) => {
 					return TUNES_CHANNEL.sendMessage(err).then(() => {
