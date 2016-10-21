@@ -56,7 +56,7 @@ module.exports = function(args){
 						recentlySkipped = false;
 					}, 5000);
 					if(index){
-						queue.splice(index - 1, 1);
+						queue.splice(parseInt(index) - 1, 1);
 					}
 					else{
 						client.dispatcher.end();
