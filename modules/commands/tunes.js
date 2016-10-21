@@ -77,19 +77,17 @@ module.exports = function(module_args){
 			yt_dl.getInfo(url, (err, info) => {
 				if(err) {
 					searchForVideo(msg).then((song) => {
-						pushSong(song);
-						msg.delete().then( () => {
-							reportQueue(TUNES_CHANNEL).then( () => {
+						pushSong(song, TUNES_CHANNEL).then( () => {
+							msg.delete().then( () => {
 								if(!playing){
 									play(queue[0]);
 								}
 							});
 						});
-
 					}).catch(msg.reply("S-sorry, I couldn't find that tune."));
 				}
 				else{
-					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username});
+					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username}, TUNES_CHANNEL);
 					msg.delete().then( () => {
 						reportQueue(TUNES_CHANNEL).then( () => {
 							if(!playing){
@@ -102,17 +100,33 @@ module.exports = function(module_args){
 		}
 	};
 
-	function reportQueue(textchannel){
+	function reportQueue(textchannel, reportEntireQueue = true){
 		if(queue.length === 0){
 			return textchannel.sendMessage("We've got no tunes -- queue something up, fampai!");
 		}
 		let tosend = [];
-		queue.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} (${addZero(new Date(song.runtime * 1000).getUTCHours())}:${addZero(new Date(song.runtime * 1000).getUTCMinutes())}:${addZero(new Date(song.runtime * 1000).getUTCSeconds())}) - ${song.requester}`);});
-		return textchannel.sendMessage(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}\n\`\`\`${tosend.slice(0,15).join("\n")}\`\`\``);
+		if(reportEntireQueue){
+			tosend.push(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}`);
+			tosend.push("```");
+			for(let i = 0; i < 10 && i < queue.length; i++){
+				tosend.push(`${i+1}. ${queue[i].title} (${getFormattedTime(queue[i].runtime * 1000)}) - ${queue[i].requester}`);
+			}
+			tosend.push("```");
+		}
+		tosend.push(`Currently playing: ${queue[0].title}, requested by ${queue[0].requester}.`);
+		tosend.push(`${getFormattedTime(dispatcher.time)} / ${getFormattedTime(queue[0].runtime * 1000)}`);
+		return textchannel.sendMessage(tosend);
 	}
-	function pushSong(song){
+
+	function getFormattedTime(ms){
+		let d = new Date(ms);
+		return `${addZero(d.getUTCHours())}:${addZero(d.getUTCMinutes())}:${addZero(d.getUTCSeconds())}`;
+	}
+
+	function pushSong(song, textchannel){
 		song.skipVotes = [];
 		queue.push(song);
+		return textchannel.sendMessage(`Successfully added ${song.title} to the end of the queue, requested by ${song.requester}.`);
 	}
 	function searchForVideo(msg){
 		return new Promise( (resolve, reject ) => {
@@ -140,7 +154,7 @@ module.exports = function(module_args){
 				dispatcher = connection.playStream(yt_dl(song.url, { audioonly: true }), {passes : 3});
 				dispatcher.on("end", () => {
 					queue.shift();
-					reportQueue(TUNES_CHANNEL).then(play(queue[0]));
+					reportQueue(TUNES_CHANNEL, false).then(play(queue[0]));
 				});
 				dispatcher.on("error", (err) => {
 					return TUNES_CHANNEL.sendMessage(err).then(() => {
