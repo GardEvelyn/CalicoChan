@@ -18,11 +18,12 @@ module.exports = function(args){
 		if(queue.length === 0){
 			return msg.reply("Sorry, there's no tunes to skip right now. W-would you like to listen to some with me?");
 		}
-		let song;
-
 		if(recentlySkipped){
 			return msg.reply("Sorry, a tune was recently skipped. Please wait a few seconds.");
 		}
+
+		let song;
+
 		if(args[1]){
 			try{
 				song = queue[parseInt(args[1] - 1)];
@@ -55,7 +56,7 @@ module.exports = function(args){
 						recentlySkipped = false;
 					}, 5000);
 					if(args[1]){
-						queue.splice(args[1] - 1, 1);
+						queue.splice(parseInt(args[1]) - 1, 1);
 					}
 					else{
 						client.dispatcher.end();
