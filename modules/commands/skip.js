@@ -24,7 +24,7 @@ module.exports = function(args){
 
 		let song;
 		let index = msg.content.split(" ")[1];
-		if(args[1]){
+		if(index){
 			try{
 				song = queue[parseInt(index - 1)];
 			}
