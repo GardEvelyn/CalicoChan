@@ -10,6 +10,7 @@ module.exports = function(module_args){
 	var queue = [];
 	var playing = false;
 	var dispatcher;
+	var recentlySkipped = false;
 	module.execute = function(msg){
 		let args = msg.content.split(" ").splice(1);
 		if(msg.channel.id !== TUNES_CHANNEL.id){
@@ -24,6 +25,9 @@ module.exports = function(module_args){
 		}
 		else if ( args[0] === "skip" && playing){
 			let song;
+			if(recentlySkipped){
+				return msg.reply("Sorry, a tune was recently skipped. Please wait a few seconds.");
+			}
 			if(args[1]){
 				try{
 					song = queue[parseInt(args[1] - 1)];
@@ -51,6 +55,10 @@ module.exports = function(module_args){
 				if(song.skipVotes.length >= (Math.ceil((TUNES_VOICE.members.array().length - 1) / 2))){
 					TUNES_CHANNEL.sendMessage(`${song.title} skipped.`).then(() => {
 						msg.delete();
+						recentlySkipped = true;
+						setTimeout(() => {
+							recentlySkipped = false;
+						}, 5000);
 						if(args[1]){
 							queue.splice(args[1] - 1, 1);
 						}
