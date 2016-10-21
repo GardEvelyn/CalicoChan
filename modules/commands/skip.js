@@ -50,17 +50,18 @@ module.exports = function(args){
 			song.skipVotes.push(msg.author.id);
 			if(song.requester.id === msg.author.id || song.skipVotes.length >= (Math.ceil((TUNES_VOICE.members.array().length - 1) / 2))){
 				TUNES_CHANNEL.sendMessage(`\`${song.title}\` skipped.`).then(() => {
-					msg.delete();
-					recentlySkipped = true;
-					setTimeout(() => {
-						recentlySkipped = false;
-					}, 5000);
-					if(index){
-						queue.splice(parseInt(index) - 1, 1);
-					}
-					else{
-						client.dispatcher.end();
-					}
+					msg.delete().then( () => {
+						recentlySkipped = true;
+						setTimeout(() => {
+							recentlySkipped = false;
+						}, 5000);
+						if(index){
+							queue.splice(parseInt(index) - 1, 1);
+						}
+						else{
+							client.dispatcher.end();
+						}
+					});	
 				});
 			}
 			else{
