@@ -55,7 +55,7 @@ module.exports = function(module_args){
 
 			if(TUNES_VOICE.members.get(msg.author.id) != null){
 				song.skipVotes.push(msg.author.id);
-				if(song.skipVotes.length >= (Math.ceil((TUNES_VOICE.members.array().length - 1) / 2))){
+				if(song.skipVotes.length >= (Math.ceil((TUNES_VOICE.members.array().length - 1) / 2) || song.requester.id === msg.author.id)){
 					TUNES_CHANNEL.sendMessage(`${song.title} skipped.`).then(() => {
 						msg.delete();
 						recentlySkipped = true;
@@ -101,7 +101,7 @@ module.exports = function(module_args){
 					});
 				}
 				else{
-					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author.username}, TUNES_CHANNEL).then( () => {
+					pushSong({url: url, title: info.title, runtime: info.length_seconds, requester: msg.author}, TUNES_CHANNEL).then( () => {
 						msg.delete().then( () => {
 							if(!playing){
 								play(queue[0]);
@@ -121,9 +121,9 @@ module.exports = function(module_args){
 		if(reportEntireQueue){
 			tosend.push(`**${queue.length}** ${queue.length === 1 ? "song" : "songs"} in queue ${(queue.length > 10 ? "*[Only next 10 songs are displayed]*" : "")}`);
 			tosend.push("```");
-			tosend.push(`1. ${queue[0].title} (${getFormattedTime(dispatcher.time)} / ${getFormattedTime(queue[0].runtime * 1000)}) - ${queue[0].requester}`);
+			tosend.push(`1. ${queue[0].title} (${getFormattedTime(dispatcher.time)} / ${getFormattedTime(queue[0].runtime * 1000)}) - ${queue[0].requester.username}`);
 			for(let i = 1; i < 10 && i < queue.length; i++){
-				tosend.push(`${i+1}. ${queue[i].title} (${getFormattedTime(queue[i].runtime * 1000)}) - ${queue[i].requester}`);
+				tosend.push(`${i+1}. ${queue[i].title} (${getFormattedTime(queue[i].runtime * 1000)}) - ${queue[i].requester.username}`);
 			}
 			tosend.push("```");
 		}
@@ -148,7 +148,7 @@ module.exports = function(module_args){
 			let query = msg.content.split(" ").splice(2).join(" ");
 			yt_api.searchVideos(query, 1).then(results => {
 				yt_api.getVideoByID(results[0].id).then( video => {
-					resolve({url: video.url, title: video.title, runtime: video.durationSeconds, requester: msg.author.username});
+					resolve({url: video.url, title: video.title, runtime: video.durationSeconds, requester: msg.author});
 				});
 			}).catch(reject);
 		});
