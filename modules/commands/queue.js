@@ -34,6 +34,6 @@ module.exports = function(args){
 		}
 		return i;
 	}
-	module.help = `${client.prefix}tunes queue :: Display the current queue.`;
+	module.help = `${client.prefix}queue :: Display the current queue.`;
 	return module;
 };

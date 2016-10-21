@@ -71,6 +71,6 @@ module.exports = function(args){
 
 	};
 
-	module.help = `${client.prefix}tunes skip [index] :: Vote to skip the currently playing tune [or the one at the specified index]..`;
+	module.help = `${client.prefix}skip [index] :: Vote to skip the currently playing tune [or the one at the specified index]..`;
 	return module;
 };
