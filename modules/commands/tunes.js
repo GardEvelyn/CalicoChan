@@ -25,6 +25,9 @@ module.exports = function(module_args){
 		}
 		else if ( args[0] === "skip" && playing){
 			let song;
+			if(queue.length === 0){
+				return msg.reply("Sorry, there's no tunes to skip right now. W-would you like to listen to some with me?");
+			}
 			if(recentlySkipped){
 				return msg.reply("Sorry, a tune was recently skipped. Please wait a few seconds.");
 			}
@@ -104,7 +107,7 @@ module.exports = function(module_args){
 								play(queue[0]);
 							}
 						});
-					});	
+					});
 				}
 			});
 		}
