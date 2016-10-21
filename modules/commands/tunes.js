@@ -128,7 +128,7 @@ module.exports = function(module_args){
 			tosend.push("```");
 		}
 		else{
-			tosend.push(`Currently playing: \`${queue[0].title}\`.`);
+			tosend.push(`Currently playing: \`${queue[0].title}\` - \`${queue[0].requester.username}\`.`);
 		}
 		return textchannel.sendMessage(tosend);
 	}
