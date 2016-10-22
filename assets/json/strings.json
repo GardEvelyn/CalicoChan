@@ -38,6 +38,11 @@
 		"seraph": [
 			"Hey, I think I'm receiving a telepathic message!",
 			"*Closes her eyes and furrows her brow...*"
+		],
+		"cucking": [
+			"please tap me",
+			"make me feel like a waifu",
+			"I want you to pet me"
 		]
 	},
 
@@ -91,21 +96,24 @@
 	"box":{
 		"chatter":[
 			"What's this? Should I open it?",
-			"*cracks open the box*"
+			"*Cracks open the box*"
 		],
 		"contents":[
 			"the concept of free will.",
 			"a delicate fabergé egg.",
 			"a salacious Serap- oh no, I can't show them that! I-it's nothing!",
-			"a loaded gun.",
+			"a loaded gun. That's rather dark... I'll put it back.",
 			"a copy of... *Space Raptor Butt Invasion*...? W-why is this here?",
-			"another box.",
+			"another box. Should I open this one too?",
 			"the script to the hit cult movie adaptation.",
 			"the Courier's Guild!? How did they get in here?",
 			"a muffin! I wonder if Castelia would like to share it...",
 			"a pet rock. It has such adorable eyes!",
 			"a preachy moral about the human condition. *Yawns*",
-			"my priceless foil Rishadan Port... How nostalgic. *Sighs wistfully before closing the box back up*"
+			"my priceless foil Rishadan Port... How nostalgic. *Sighs wistfully before closing the box back up*",
+			"a plush pet Patchi. Remember to pet your local Patchouli!",
+			"an obtuse Magic Duels quest...",
+			"an obtuse Duelyst quest... Maybe Magic Duels has a nicer one today?"
 		]
 	},
 	"err": "Sorry, something went wrong. Please safely locate your nearest bot moderator and tell him about this. And p-please don't hit me...",
