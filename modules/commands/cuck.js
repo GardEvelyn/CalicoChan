@@ -13,7 +13,7 @@ module.exports = function(args){
 				message.push(client.strings.cuck.seraph[i]);
 			}
 			let r = random(0, client.strings.cuck.cucking.length - 1);
-			message.push("Ah! It's from Seraph-chan! She says... '" + msg.author + ", " + client.strings.cuck.cucking + "'? Huh?");
+			message.push("Ah! It's from Seraph-chan! She says... '" + msg.author + ", " + client.strings.cuck.cucking[r] + "'? Huh?");
 		}
 		msg.reply(message);
 	};
