@@ -49,5 +49,7 @@ module.exports = function(args){
 		}
 	};
 
+	module.help = `${client.prefix}adversaries [setcode] :: Generates a report of all adversaries [in a set].`;
+
 	return module;
 };

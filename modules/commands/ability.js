@@ -1,6 +1,6 @@
 module.exports = function(args){
 	var module = {};
-	let abilities_o = require("./assets/json/adversary_abilities.json");
+	let abilities_o = require("./../../assets/json/adversary_abilities.json");
 	const abilityGen = require("./../Abilities")({abilities : abilities_o});
 	const client = args.client;
 	module.execute = function(msg){
@@ -27,6 +27,6 @@ module.exports = function(args){
 			console.log(err);
 		}
 	};
-
+	module.help = `${client.prefix}ability [category] :: Pulls a random generic Adversary ability [from a category].`;
 	return module;
 };

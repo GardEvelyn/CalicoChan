@@ -1,6 +1,6 @@
 {
   "name": "Calico-chan",
-  "version": "1.2.10",
+  "version": "1.3.0",
   "description": "Just an awful Discord bot running on Discord.js.",
   "main": "cc.js",
   "scripts": {
@@ -12,9 +12,12 @@
     "discord.js": "*",
     "mongodb": "^2.2.10",
     "request": "^2.74.0",
-    "sqlite": "^2.2.0",
     "xml2js": "*",
     "ytdl-core": "*",
-    "js-beautify": "*"
+    "js-beautify": "*",
+    "simple-youtube-api": "^2.1.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }

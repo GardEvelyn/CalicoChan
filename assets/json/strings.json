@@ -1,5 +1,5 @@
 {
-	"help": "`!random` `!validate <decklist>` `!booster <setcode>` `!roll <quantity>d<sides>` `!ability [category]` `!adversaries [setcode]` `!spoiler <adversaryname>` `!oracle <cardname>`",
+	"help": "`!random`\n`!validate <decklist>`\n`!booster <setcode>`\n`!roll <quantity>d<sides>`\n`!ability [category]`\n`!adversaries [setcode]`\n`!spoiler <adversaryname>`\n`!oracle <cardname>`\n`!tunes <play <YouTube URL or search terms> | skip [position] | queue>>`",
 
 	"validate":{
 		"advnull": "Error: I couldn't find your Adversary, so I won't be validating color identity.",
@@ -104,9 +104,9 @@
 			"the Courier's Guild!? How did they get in here?",
 			"a muffin! I wonder if Castelia would like to share it...",
 			"a pet rock. It has such adorable eyes!",
-			"a preachy moral about the human condition. *Yawns*"
+			"a preachy moral about the human condition. *Yawns*",
 			"my priceless foil Rishadan Port... How nostalgic. *Sighs wistfully before closing the box back up*"
-		],
+		]
 	},
 	"err": "Sorry, something went wrong. Please safely locate your nearest bot moderator and tell him about this. And p-please don't hit me...",
 	"errformat": "Sorry, something went wrong. Was your command properly formatted?",
@@ -115,6 +115,9 @@
 		"admin" : "205743526716243979",
 		"hawk" : "189667659661443072",
 		"cynic" : "177554154166812673",
-		"blue" : "149021893016551424"
+		"blue" : "149021893016551424",
+		"guild_id" : "189667907440082944",
+		"voice_id" : "225297088987136001",
+		"channel_id" : "206104170929848320"
 	}
 }

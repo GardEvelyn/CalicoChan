@@ -83,5 +83,7 @@ module.exports = function(args){
 		});
 	};
 
+	module.help = `${client.prefix}oracle <pattern> :: Searches for the oracle text of cards whose names match a specified pattern.`;
+
 	return module;
 };
